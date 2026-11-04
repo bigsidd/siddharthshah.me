@@ -27,7 +27,7 @@ body{font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;color:var(--ink);-w
 h1{text-wrap:balance} p,li{text-wrap:pretty}
 a{color:inherit}
 a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.wrap{max-width:712px;margin:0 auto;padding:0 24px}
 .top{padding-top:28px}
 .bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:0 24px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:15px;font-weight:500}
 .top .bar{padding-bottom:4px;border-bottom:3px double var(--rule)}
@@ -40,17 +40,20 @@ h1{margin:32px 0 6px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font
 .title{margin:0;font-weight:600;font-size:18px;color:var(--accent)}
 .contact{margin:6px 0 0;font-size:15px;line-height:1.6;color:var(--muted)}
 .contact span{white-space:nowrap}
-.contact span+span::before{content:"· "}
+.contact{display:flex;flex-wrap:wrap;gap:0 18px}
 .contact a,li a{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}
 .headline{margin:28px 0 4px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:clamp(22px,3.4vw,28px);line-height:1.2}
-.proof,ul,.note{max-width:68ch}
 .proof{margin:0;font-size:17px;line-height:1.55}
 h2{margin:36px 0 4px;padding-bottom:6px;border-bottom:1px solid var(--rule);font-size:15px;font-weight:600;color:var(--accent)}
-.role{margin:20px 0 0;font-size:16px;line-height:1.45;font-weight:400}
+.role{margin:20px 0 0;font-size:16px;line-height:1.45;font-weight:400;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 20px}
+.who{flex:1 1 0;min-width:0}
+@media (max-width:599px){.role{flex-wrap:wrap}.who{flex-basis:100%}}
+@media (min-width:600px){.role{flex-wrap:nowrap}}
 .role strong{font-weight:600}
 .title-r::before{content:" · "}
-.dates{display:block;margin-top:2px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13.5px;font-weight:500;color:var(--muted)}
-.acq::before{content:"· "}
+.dates{white-space:nowrap;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13.5px;font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
+.acq{color:var(--muted);white-space:nowrap}
+.acq::before{content:" · "}
 .note{margin:4px 0 0;font-size:16px;line-height:1.5;color:var(--muted)}
 ul{margin:6px 0 0;padding-left:20px}
 li{margin-top:6px;font-size:16px;line-height:1.55}
@@ -64,8 +67,8 @@ footer p{margin:0;font-family:"IBM Plex Sans",sans-serif;font-size:15px;color:va
   @page{size:Letter;margin:0.4in 0.55in}
   h1{margin:0 0 2pt;font-size:22pt}
   .contact,.proof,li,.note,.role{font-size:10pt}
-  .dates{display:inline;margin:0;font-size:8.5pt}
-  .dates::before{content:" · "}
+  .dates{font-size:8.5pt}
+  .role{gap:0 12pt}
   .contact,.proof,li,.note,.role{font-size:9.5pt;line-height:1.35}
   .note{margin-top:2pt}
   ul{margin-top:2pt}
@@ -75,7 +78,6 @@ footer p{margin:0;font-family:"IBM Plex Sans",sans-serif;font-size:15px;color:va
   li{margin-top:1pt}
   ul,.role{break-inside:avoid}
   h2{break-after:avoid}
-  .proof,ul,.note{max-width:none}
 }
 </style>
 </head>
@@ -88,7 +90,7 @@ footer p{margin:0;font-family:"IBM Plex Sans",sans-serif;font-size:15px;color:va
 <p class="headline">I get enterprise partners live, and they stay.</p>
 <p class="proof">A decade in adtech, most of it in product, through two acquisitions and the integrations that followed.</p>
 <h2>Experience</h2>
-<h3 class="role"><strong>MomentScience</strong> <span class="title-r">Head of Partner Success</span><span class="dates">May 2025 – Present</span></h3>
+<h3 class="role"><span class="who"><strong>MomentScience</strong> <span class="title-r">Head of Partner Success</span></span><span class="dates">May 2025 – Present</span></h3>
 <p class="note">Ads shown as perks on order confirmation and thank-you pages.</p>
 <ul>
 <li>Ran the technical side of 18 enterprise deals, 12 of which closed.</li>
@@ -97,36 +99,36 @@ footer p{margin:0;font-family:"IBM Plex Sans",sans-serif;font-size:15px;color:va
 <li>Replaced one-off launches with a playbook every launch now runs on: a security-answer bank, integration checklists and AI tooling.</li>
 <li>Directed the iOS and Android launch of WiWo, a location-based rewards app, and run MoMoney, a gaming offer platform, end to end.</li>
 </ul>
-<h3 class="role"><strong>Upward Ventures</strong> <span class="title-r">Founder</span><span class="dates">Oct 2024 – Present</span></h3>
+<h3 class="role"><span class="who"><strong>Upward Ventures</strong> <span class="title-r">Founder</span></span><span class="dates">Oct 2024 – Present</span></h3>
 <ul>
 <li>Product consulting for early-stage teams.</li>
 <li>Part-time customer success and career coaching for a product-career program: positioning, resume rewrites and job-search plans for senior product managers.</li>
 </ul>
-<h3 class="role"><strong>InMarket</strong> <span class="title-r">Senior Product Manager</span><span class="dates">Sep 2020 – Oct 2024</span></h3>
+<h3 class="role"><span class="who"><strong>InMarket</strong> <span class="title-r">Senior Product Manager</span></span><span class="dates">Sep 2020 – Oct 2024</span></h3>
 <ul>
 <li>Grew the mobile ads SDK, about <strong>70% of company revenue</strong>, by <strong>$15M</strong> a year and lifted profit 24% by building real-time location data into it.</li>
 <li>Folded NinthDecimal&#x27;s location and measurement products into InMarket six months ahead of plan, adding $8M in revenue and 40% more enterprise clients.</li>
 <li>Cut incident rates 25% and time to resolve 50% with real-time monitoring and troubleshooting dashboards.</li>
 </ul>
-<h3 class="role"><strong>NinthDecimal</strong> <span class="title-r">Product Manager</span><span class="dates">Sep 2019 – Aug 2020 <span class="acq">acquired by InMarket</span></span></h3>
+<h3 class="role"><span class="who"><strong>NinthDecimal</strong> <span class="title-r">Product Manager</span><span class="acq">acquired by InMarket</span></span><span class="dates">Sep 2019 – Aug 2020</span></h3>
 <ul>
 <li>Kept 95% of Kiip&#x27;s clients through the merger by writing the integration playbook.</li>
 <li>Raised attribution margins to 60%. One of seven employees kept on after the acquisition.</li>
 </ul>
-<h3 class="role"><strong>Kiip</strong> <span class="title-r">Customer Success Manager, then Product Manager</span><span class="dates">Aug 2015 – Sep 2019 <span class="acq">acquired by NinthDecimal</span></span></h3>
+<h3 class="role"><span class="who"><strong>Kiip</strong> <span class="title-r">Customer Success Manager, then Product Manager</span><span class="acq">acquired by NinthDecimal</span></span><span class="dates">Aug 2015 – Sep 2019</span></h3>
 <ul>
 <li>Built a JavaScript ad tag and a private ad marketplace that brought in <strong>$5.2M+</strong> and were a key asset in the sale of the company.</li>
 <li>Owned the ads SDK and advertiser tools for 500+ brands on a platform reaching <strong>50M+ users</strong>. Managed one direct report.</li>
 </ul>
-<h3 class="role"><strong>Movoto</strong> <span class="title-r">Customer Success Manager and Licensed Realtor</span><span class="dates">Mar 2014 – Jul 2015</span></h3>
+<h3 class="role"><span class="who"><strong>Movoto</strong> <span class="title-r">Customer Success Manager and Licensed Realtor</span></span><span class="dates">Mar 2014 – Jul 2015</span></h3>
 <ul>
 <li>Managed 400+ agents and kept 97% through the company&#x27;s acquisition.</li>
 </ul>
-<h3 class="role"><strong>IHG, Holiday Inn Fresno Downtown</strong> <span class="title-r">General Manager</span><span class="dates">Jan 2011 – Feb 2014</span></h3>
+<h3 class="role"><span class="who"><strong>IHG, Holiday Inn Fresno Downtown</strong> <span class="title-r">General Manager</span></span><span class="dates">Jan 2011 – Feb 2014</span></h3>
 <ul>
 <li>Ran a 197-room, $3.5M full-service hotel with 75 staff, and cut staff turnover 40%.</li>
 </ul>
-<h3 class="role"><strong>Dossier Group</strong> <span class="title-r">Lead Consultant, Digital and Growth Strategy</span><span class="dates">Aug 2008 – Sep 2010</span></h3>
+<h3 class="role"><span class="who"><strong>Dossier Group</strong> <span class="title-r">Lead Consultant, Digital and Growth Strategy</span></span><span class="dates">Aug 2008 – Sep 2010</span></h3>
 <ul>
 <li>Ran NBA All-Star campaigns that won a client the fan vote three years running.</li>
 </ul>
