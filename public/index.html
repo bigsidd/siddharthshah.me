@@ -17,8 +17,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@bigsidd">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#F3EEE4">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FFFFFF" id="tc">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/brand/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/brand/icon-192.png" type="image/png" sizes="192x192">
@@ -26,78 +26,81 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<script>(function(){var r=document.documentElement,m='auto';try{m=localStorage.getItem('mode')||'auto'}catch(e){}var h=new Date().getHours();r.dataset.mode=m;r.dataset.theme=(m==='dark'||(m!=='light'&&(h<7||h>=19)))?'dark':'light'})()</script>
 <style>
-:root{--paper:#F3EEE4;--ink:#1E3A2F;--muted:#4A4636;--rule:#1E3A2F;--accent:#A8431F;--strike:cubic-bezier(.7,0,.9,.5);--settle:cubic-bezier(.2,.9,.2,1);--feed:cubic-bezier(.6,0,.2,1)}
+/* Colours: light and dark sets. Auto mode picks by the visitor's local time (light 7 AM–7 PM); the toggle overrides and is remembered. */
+:root{--bg:#FFFFFF;--ink:#121316;--muted:#5A5D62;--accent:#8A5A00;--hair:rgba(18,19,22,.16);color-scheme:light;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+:root[data-theme="dark"]{--bg:#111214;--ink:#EDEDEB;--muted:#A3A5A8;--accent:#E5A24B;--hair:rgba(237,237,235,.18);color-scheme:dark}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--paper)}
-body{font-family:"IBM Plex Sans","Segoe UI",Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-h1{text-wrap:balance} p{text-wrap:pretty}
+html,body{margin:0;background:var(--bg)}
+body{font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
+h1{text-wrap:balance}p{text-wrap:pretty}
 a{color:inherit}
-a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.page{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:48px 24px}
-.card{width:100%;max-width:880px;border-top:3px double var(--rule);border-bottom:3px double var(--rule);display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center;padding:40px 0}
-.photo{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border:1px solid var(--rule);outline:1px solid var(--rule);outline-offset:4px}
-.label{margin:0 0 14px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-h1{margin:0 0 18px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:clamp(40px,6vw,64px);line-height:1;letter-spacing:-0.03em}
-.copy p{margin:0 0 12px;font-size:19px;line-height:1.6;max-width:52ch}
-.copy .lede{font-size:22px;line-height:1.4;font-weight:600}
-.copy p.ask{margin:0;font-size:17px}
-.copy p.ask a{display:inline-block;padding:10px 0;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}
-.copy p a{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}
-.links{list-style:none;margin:22px 0 0;padding:16px 0 0;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:4px 28px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:16px;font-weight:500}
-.links a{display:inline-block;padding:12px 0;text-decoration:none;background:linear-gradient(var(--accent),var(--accent)) no-repeat 0 calc(100% - 8px)/0% 2px}
-.links a span{display:inline-block}
-@media (hover:hover){.links a:hover{background-size:100% 2px}.links a:hover span{transform:translate(2px,-2px)}}
-.links a:focus-visible{background-size:100% 2px}
-.links span{color:var(--accent)}
-@media (max-width:700px){.card{grid-template-columns:1fr;gap:28px;padding:32px 0}.photo{max-width:160px}}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.fade,.fade *{transition:background-color .45s ease,color .45s ease,border-color .45s ease,text-decoration-color .45s ease}
 
-/* Upward Ventures: the one UVX glyph, shown on hover */
-.uvx .uv{display:inline-block;width:0;overflow:hidden;vertical-align:-2px;color:var(--ink)}
-.uvx .uv svg{width:16px;height:16px;display:block}
-@media (hover:hover){.uvx:hover .uv{width:16px;margin-left:5px}}
-.uvx:focus-visible .uv{width:16px;margin-left:5px}
-/* postmark: Los Angeles + live local time; tap for the viewer's own time */
-.label{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
-.postmark{font:inherit;font-size:13px;letter-spacing:inherit;text-transform:inherit;white-space:nowrap;color:var(--ink);background:transparent;border:3px double var(--ink);border-radius:999px;padding:0 14px;min-height:44px;transform:rotate(-2.5deg);cursor:pointer}
-.label .night{font-size:13px;color:var(--accent)}
-.label .wx{font-size:13px;color:var(--muted)}
-.postmark:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-/* living marks: cancellation waves beside the postmark, the weather chip, the sun in the ring */
-.pmw{position:relative;display:inline-flex;align-items:center}
-.cancel{position:absolute;left:calc(100% - 20px);top:50%;width:34px;height:22px;margin-top:-12px;color:var(--ink);opacity:0;pointer-events:none;transform:rotate(-2.5deg)}
-.wxchip{display:inline-flex;align-items:center;justify-content:center;gap:5px;height:26px;width:46px;border:3px double var(--ink);border-radius:999px;transform:rotate(-2.5deg);overflow:hidden}
-.wxchip i{width:4px;height:4px;border-radius:50%;background:var(--ink);opacity:.2}
-.wxchip[hidden],.gh[hidden]{display:none}
-.gh{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;vertical-align:top}
-.sun{display:block;width:18px;height:18px;flex:none;overflow:visible}
-.sun .ring{fill:none;stroke:var(--ink);stroke-width:1.2;vector-effect:non-scaling-stroke}
-@media (prefers-reduced-motion:reduce){.wxchip i{opacity:1}}
+.page{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:28px 24px}
+.card{position:relative;width:100%;max-width:800px;display:grid;grid-template-columns:184px minmax(0,1fr);gap:44px;align-items:start;padding:8px 0 32px;border-bottom:1px solid var(--hair)}
+.photo{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border:1px solid var(--ink);outline:1px solid var(--ink);outline-offset:4px;margin-top:46px;transition:filter .6s ease}
+:root[data-theme="dark"] .photo{filter:brightness(.9) contrast(1.04) saturate(.9)}
+
+.label{margin:0 0 12px;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:flex;flex-wrap:wrap;gap:2px 0}
+.when{font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.label .wx,.label .night{display:block;color:var(--muted)}
+.when .tm::before{content:"\00a0·\00a0"}
+h1{margin:0 0 16px;font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,64px);line-height:1;letter-spacing:-.03em}
+.copy p{margin:0 0 10px;font-size:17px;line-height:1.6;max-width:56ch}
+.copy .lede{font-size:21px;line-height:1.4;font-weight:600}
+.copy p a{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}
+.ask{margin:0;font-size:17px}.ask a{display:inline-block;padding:8px 0}
+
+.links{list-style:none;margin:12px 0 0;padding:8px 0 0;border-top:1px solid var(--hair);display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px;font-family:var(--mono);font-weight:500;font-size:15px}
+.links a{display:inline-flex;align-items:center;gap:7px;min-height:44px;text-decoration:none}
+.links a:hover .t{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
+.links .ar{color:var(--accent)}
+.links .first{font-weight:600}
+.links .sep{flex:1}
+.links .soc a{min-width:44px;justify-content:center}
+.links .soc svg{width:20px;height:20px;fill:currentColor}
+.links .soc a:hover svg{color:var(--accent)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.mode{position:absolute;top:10px;right:0;display:none;align-items:center;justify-content:center;width:28px;height:28px;padding:0;background:transparent;border:1px solid var(--hair);border-radius:999px;color:var(--muted);cursor:pointer}
+.js .mode{display:inline-flex}
+.mode:hover{color:var(--ink);border-color:var(--ink)}
+.mode svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+
+@media (max-width:640px){
+  .page{padding:20px 18px;place-items:start stretch}
+  .card{grid-template-columns:104px 1fr;gap:10px 16px;padding:8px 0 12px}
+  .card>picture{grid-column:1;grid-row:1}
+  .photo{margin-top:0}
+  .copy{display:contents}
+  .label{grid-column:2;grid-row:1;align-self:center;margin:0;padding-right:36px;font-size:11.5px;flex-direction:column}
+  .photo{outline-offset:3px}
+  .when .tm::before{content:none}
+  .when{display:flex;flex-direction:column}
+  .rest{grid-column:1/-1}
+  .mode{top:8px}
+  h1{font-size:34px;margin:0 0 6px}
+  .rest p{font-size:15px;line-height:1.45;margin:0 0 6px}
+  .rest .lede{font-size:17.5px;line-height:1.3}
+  .ask{font-size:15.5px}.ask a{padding:4px 0}
+  .links{gap:0 8px;font-size:12.5px;margin-top:6px;padding-top:4px}
+  .links a{min-height:40px}
+}
+@media (min-width:641px){.rest{grid-column:2}}
 @media (prefers-reduced-motion:no-preference){
-  .links a{transition:background-size .25s ease-out}.links a span{transition:transform .2s ease-out}.uvx .uv{transition:width .2s ease-out,margin .2s ease-out}
-  .card{animation:open .5s cubic-bezier(.6,0,.2,1) backwards}
+  .enter .card{animation:open .5s cubic-bezier(.6,0,.2,1) both}
   @keyframes open{from{clip-path:inset(-12px 50% -12px 50%)}to{clip-path:inset(-12px 0 -12px 0)}}
-  .photo{animation:frame .45s .2s ease-out backwards}
-  @keyframes frame{from{outline-offset:14px;outline-color:transparent;opacity:0}to{outline-offset:4px;opacity:1}}
-  .copy>*{animation:settle .4s ease-out backwards}
-  .copy>:nth-child(2){animation-delay:.25s}.copy>:nth-child(3){animation-delay:.3s}.copy>:nth-child(4){animation-delay:.35s}.copy>:nth-child(5){animation-delay:.4s}.copy>:nth-child(6){animation-delay:.45s}
+  .enter picture{animation:frame .45s .2s ease-out both}
+  @keyframes frame{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+  .enter .label,.enter .rest>*{animation:settle .4s ease-out both}
+  .enter .label{animation-delay:.25s}.enter .rest>:nth-child(1){animation-delay:.3s}.enter .rest>:nth-child(2){animation-delay:.36s}.enter .rest>:nth-child(3){animation-delay:.42s}.enter .rest>:nth-child(4){animation-delay:.48s}.enter .rest>:nth-child(5){animation-delay:.52s}.enter .rest>:nth-child(6){animation-delay:.56s}
   @keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .copy>.label{animation:press .2s .55s cubic-bezier(.2,.9,.2,1) backwards}
-  @keyframes press{from{opacity:0;transform:scale(1.35)}to{opacity:1;transform:scale(1)}}
-  .postmark.go{animation:pmpress .3s both}
-  @keyframes pmpress{0%{transform:rotate(-2.5deg) scale(1.035);opacity:.55;animation-timing-function:var(--strike)}30%{transform:rotate(-2.5deg) scale(.988);opacity:1;animation-timing-function:var(--settle)}100%{transform:rotate(-2.5deg) scale(1);opacity:1}}
-  .cancel.go{animation:wave 2.4s 90ms both}
-  @keyframes wave{0%{opacity:0}3%{opacity:.7}25%{opacity:.7;animation-timing-function:cubic-bezier(.4,0,.8,.6)}100%{opacity:0}}
-  .wxchip.on{animation:chipin .2s var(--settle) both}
-  @keyframes chipin{from{opacity:0;transform:rotate(-2.5deg) scale(1.25)}to{opacity:1;transform:rotate(-2.5deg) scale(1)}}
-  .wxchip.on i{animation:wdot 1.2s infinite}.wxchip.on i:nth-child(2){animation-delay:.24s}.wxchip.on i:nth-child(3){animation-delay:.48s}
-  @keyframes wdot{0%{opacity:.2;transform:none}1%{opacity:.5;transform:scale(1.7);animation-timing-function:var(--settle)}14%,58%{opacity:1;transform:none}78%,100%{opacity:.2;transform:none}}
-  .wxchip.out{animation:chipout .16s var(--strike) both}
-  @keyframes chipout{to{opacity:0;transform:rotate(-2.5deg) scale(.86)}}
-  .wxchip.gone{animation:chipgone .22s var(--feed) both}
-  @keyframes chipgone{to{opacity:0;width:0;border-width:0;margin:0}}
-  .wx.in{animation:wxin .26s var(--settle) both}
-  @keyframes wxin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .when.tick{animation:tick .5s ease-out both}
+  @keyframes tick{from{opacity:.3}to{opacity:1}}
 }
 </style>
 <script type="application/ld+json">
@@ -107,55 +110,68 @@ h1{margin:0 0 18px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-w
 <body>
 <main class="page">
 <div class="card">
+<button class="mode" id="mode" type="button" aria-label="Colour mode"><svg viewBox="0 0 16 16" aria-hidden="true"></svg></button>
 <picture><source srcset="/brand/siddharth.webp" type="image/webp"><img class="photo" src="/brand/siddharth.jpg" width="512" height="512" alt="Siddharth Shah" fetchpriority="high" decoding="async"></picture>
 <div class="copy">
-<p class="label">Los Angeles</p>
+<p class="label" id="label">Los Angeles Area</p>
+<div class="rest">
 <h1>Siddharth&nbsp;Shah</h1>
 <p class="lede">I build products and the partnerships that make them&nbsp;pay.</p>
 <p>Eighteen years across customer success, partnerships and product, the last decade in adtech. I work the whole partner lifecycle, from the technical sale through launch to keeping them&nbsp;live.</p>
-<p>These days I build most of my own tools with agents, and through <a class="uvx" href="https://upwardvx.com">Upward Ventures<span class="uv" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5.4 10.6 10.4 5.6M6.9 5.6h3.5v3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg></span></a> I consult for small teams and build those tools for&nbsp;them.</p>
+<p>These days I build most of my own tools with agents, and through <a href="https://upwardvx.com">Upward Ventures</a> I consult for small teams and build those tools for&nbsp;them.</p>
 <p class="ask"><a href="mailto:hello@siddharthshah.me">hello@siddharthshah.me</a></p>
 <ul class="links">
-<li><a href="/resume/">Resume <span aria-hidden="true">→</span></a></li>
-<li><a href="https://www.linkedin.com/in/iamsiddharthshah">LinkedIn <span aria-hidden="true">↗</span></a></li>
-<li><a href="https://github.com/bigsidd">GitHub <span aria-hidden="true">↗</span></a></li>
-<li><a href="https://x.com/bigsidd">X <span aria-hidden="true">↗</span></a></li>
-<li><a href="/siddharth-shah.vcf" download>Save contact <span aria-hidden="true">↓</span></a></li>
+<li><a class="first" href="/projects/"><span class="t">Projects</span><span class="ar" aria-hidden="true">→</span></a></li>
+<li><a href="/resume/"><span class="t">Resume</span><span class="ar" aria-hidden="true">→</span></a></li>
+<li class="sep" aria-hidden="true"></li>
+<li class="soc"><a href="https://www.linkedin.com/in/iamsiddharthshah" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 2h15A2.5 2.5 0 0 1 22 4.5v15a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 19.5v-15A2.5 2.5 0 0 1 4.5 2Zm1.7 7.6V18h2.7V9.6H6.2Zm1.35-4.2a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1ZM10.6 9.6V18h2.7v-4.3c0-1.2.3-2.2 1.7-2.2 1.3 0 1.4 1.1 1.4 2.3V18h2.7v-4.9c0-2.4-.5-3.7-3.1-3.7-1.3 0-2.2.7-2.6 1.4V9.6h-2.8Z"/></svg><span class="sr">LinkedIn</span></a></li>
+<li class="soc"><a href="https://github.com/bigsidd" title="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span class="sr">GitHub</span></a></li>
+<li class="soc"><a href="https://x.com/bigsidd" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.59-6.64 7.59H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41Z"/></svg><span class="sr">X</span></a></li>
 </ul>
+</div>
 </div>
 </div>
 </main>
 <script>
-(()=>{try{const l=document.querySelector('.label');const b=document.createElement('button');b.type='button';b.className='postmark';b.title='Show your local time';
-const RM=matchMedia('(prefers-reduced-motion: reduce)'),t0=Date.now(),go=(e,c='go')=>{e.classList.remove(c);void e.offsetWidth;e.classList.add(c)};
-const pw=document.createElement('span');pw.className='pmw';pw.innerHTML='<svg class="cancel" viewBox="0 0 34 22" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 4c3.5-2.6 6 2.6 9.5 0s6 2.6 9.5 0 6 2.6 9.5 0"/><path d="M1 11c3.5-2.6 6 2.6 9.5 0s6 2.6 9.5 0 6 2.6 9.5 0"/><path d="M1 18c3.5-2.6 6 2.6 9.5 0s6 2.6 9.5 0 6 2.6 9.5 0"/></g></svg>';const cx=pw.firstChild;pw.prepend(b);
-const chip=document.createElement('span');chip.className='wxchip';chip.setAttribute('aria-hidden','true');chip.hidden=true;chip.innerHTML='<i></i><i></i><i></i>';
-const wx=document.createElement('span');wx.className='wx';wx.title='Long Beach, in Los Angeles County';wx.hidden=true;
-const pa=document.createTextNode(''),pb=document.createTextNode(''),gh=document.createElement('span');gh.className='gh';gh.innerHTML='<svg class="sun" viewBox="0 0 96 96" aria-hidden="true"><defs><clipPath id="sky"><circle cx="48" cy="48" r="38"/></clipPath><clipPath id="above"><rect width="96" height="60"/></clipPath></defs><circle class="ring" cx="48" cy="48" r="44"/><g clip-path="url(#sky)"><g clip-path="url(#above)"><ellipse cx="46" cy="30" rx="15" ry="15" fill="#A8431F"/></g></g><line class="ring" x1="8" y1="60" x2="88" y2="60"/></svg><span></span>';
-const se=gh.querySelector('ellipse'),gt=gh.lastChild;wx.append(pa,gh,pb);wx.addEventListener('animationend',()=>wx.classList.remove('in'));
-const night=document.createElement('span');night.className='night';night.textContent='Replies in the morning';night.hidden=true;let mine=false,w=null,pend=!!(window.fetch&&window.AbortController),chipOn=false;
-const LA='America/Los_Angeles';
-const la=new Intl.DateTimeFormat('en-US',{timeZone:LA,weekday:'short',hour:'numeric',minute:'2-digit'});
-const hr=new Intl.DateTimeFormat('en-US',{timeZone:LA,hour:'numeric',hourCycle:'h23'});
-const me=new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZoneName:'short'});
-const set=(el,t)=>{if(el.textContent!==t)el.textContent=t};
+(()=>{try{
+const root=document.documentElement,body=document.body,RM=matchMedia('(prefers-reduced-motion: reduce)');
+root.classList.add('js');if(!RM.matches){body.classList.add('enter');setTimeout(()=>body.classList.remove('enter'),1300)}
+
+/* colour mode: auto picks by the visitor's local time (light 7 AM–7 PM); the button cycles auto → light → dark and is remembered */
+const btn=document.getElementById('mode'),ic=btn.firstChild,tc=document.getElementById('tc');
+const ICON={auto:'<circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.4 1.6"/>',light:'<circle cx="8" cy="8" r="3"/><path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3"/>',dark:'<path d="M13.5 9.6A5.6 5.6 0 0 1 6.4 2.5a5.6 5.6 0 1 0 7.1 7.1Z"/>'};
+const cur=()=>root.dataset.mode||'auto';
+const byClock=()=>{const h=new Date().getHours();return h<7||h>=19};
+const apply=()=>{const m=cur(),d=m==='dark'||(m==='auto'&&byClock());if(root.dataset.theme!==(d?'dark':'light'))root.dataset.theme=d?'dark':'light';tc.content=getComputedStyle(root).getPropertyValue('--bg').trim();ic.innerHTML=ICON[m];
+  const l=m==='auto'?`Colour mode: auto, ${d?'dark':'light'} because of your local time. Switch to light.`:m==='light'?'Colour mode: light. Switch to dark.':'Colour mode: dark. Switch back to auto.';btn.setAttribute('aria-label',l);btn.title=l};
+btn.addEventListener('click',()=>{const n={auto:'light',light:'dark',dark:'auto'}[cur()];body.classList.add('fade');root.dataset.mode=n;try{n==='auto'?localStorage.removeItem('mode'):localStorage.setItem('mode',n)}catch(e){}apply();setTimeout(()=>body.classList.remove('fade'),500)});
+apply();setInterval(()=>{if(cur()==='auto')apply()},60000);
+
+/* time line: Los Angeles Area + live LA time; tap for yours. Then at most one extra: replies in the morning late at night, else golden hour, else the Long Beach weather. */
+const label=document.getElementById('label'),when=document.createElement('button');when.type='button';when.className='when';when.title='Show your local time';
+const wx=document.createElement('span');wx.className='wx';const night=document.createElement('span');night.className='night';
+label.textContent='';label.append(when,wx,night);
+const LA='America/Los_Angeles',la=new Intl.DateTimeFormat('en-US',{timeZone:LA,weekday:'short',hour:'numeric',minute:'2-digit'}),hr=new Intl.DateTimeFormat('en-US',{timeZone:LA,hour:'numeric',hourCycle:'h23'}),me=new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZoneName:'short'});
 const off=(tz,now)=>{const p={};for(const x of new Intl.DateTimeFormat('en-US',{timeZone:tz,hourCycle:'h23',year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric'}).formatToParts(now))p[x.type]=+x.value;return Math.round((Date.UTC(p.year,p.month-1,p.day,p.hour%24,p.minute)-now)/6e4)};
-const gap=now=>{const d=-now.getTimezoneOffset()-off(LA,now);if(!d)return'Same time as LA';const a=Math.abs(d),h=Math.floor(a/60),m=a%60;return(h?h+'h':'')+(h&&m?' ':'')+(m?m+'m':'')+(d>0?' ahead of LA':' behind LA')};
+const gap=now=>{const d=-now.getTimezoneOffset()-off(LA,now);if(!d)return'same time as LA';const a=Math.abs(d),h=Math.floor(a/60),m=a%60;return(h?h+'h':'')+(h&&m?' ':'')+(m?m+'m':'')+(d>0?' ahead of LA':' behind LA')};
 const sun=t=>{const r=Math.PI/180,lat=33.77,lng=-118.19,jd=t/864e5+2440587.5,n0=Math.ceil(jd-2451545+.0008);for(let n=n0-1;n<=n0+1;n++){const j=n-lng/360,M=(357.5291+.98560028*j)%360,C=1.9148*Math.sin(M*r)+.02*Math.sin(2*M*r)+.0003*Math.sin(3*M*r),L=(M+C+282.9372)%360,jt=2451545+j+.0053*Math.sin(M*r)-.0069*Math.sin(2*L*r),d=Math.asin(Math.sin(L*r)*Math.sin(23.4397*r)),h=Math.acos((Math.sin(-.833*r)-Math.sin(lat*r)*Math.sin(d))/(Math.cos(lat*r)*Math.cos(d)))/r,s=(jt+h/360-2440587.5)*864e5;if(s-t>=0&&s-t<=36e5)return(s-t)/6e4}return -1};
-const sunAt=m=>{const f=Math.min(1,Math.max(0,1-Math.ceil(m)/60)),cy=30+f*45,k=Math.min(1,Math.max(0,(cy-45)/15));se.setAttribute('cx',(44+f*6).toFixed(2));se.setAttribute('cy',cy.toFixed(2));se.setAttribute('ry',(15*(1-.16*k)).toFixed(2))};
+let mine=false,w=null,last='';const t0=Date.now();
+const set=(el,t)=>{if(el.textContent!==t)el.textContent=t};
+const two=(a,b)=>{if(when.textContent!==a+b){when.innerHTML='';const x=document.createElement('span'),y=document.createElement('span');x.textContent=a;y.className='tm';y.textContent=b;when.append(x,y)}};
+/* favicon: an LA-hour clock in the card's colours (day / golden / night), redrawn on the minute */
 const fc=document.createElement('canvas');fc.width=fc.height=32;const fx=fc.getContext&&fc.getContext('2d');let sig='',icon=null;
-const fav=(h,st)=>{const s=st+Math.round(h*12);if(!fx||s===sig)return;sig=s;const c=fx,ink='#1E3A2F',paper='#F3EEE4',n=st==='night',fg=st==='gold'?'#A8431F':n?paper:ink,a=h%12/6*Math.PI-Math.PI/2;
-c.clearRect(0,0,32,32);c.beginPath();c.arc(16,16,15.5,0,7);c.fillStyle=n?ink:paper;c.fill();c.strokeStyle=fg;c.globalAlpha=n?.6:1;c.lineWidth=n?1.4:2.4;c.beginPath();c.arc(16,16,14,0,7);c.stroke();c.globalAlpha=1;
-c.lineCap='butt';c.lineWidth=2;c.beginPath();c.moveTo(16,3.4);c.lineTo(16,6);c.stroke();c.lineCap='square';c.lineWidth=3;c.beginPath();c.moveTo(16,16);c.lineTo(16+Math.cos(a)*8.2,16+Math.sin(a)*8.2);c.stroke();c.beginPath();c.arc(16,16,2.1,0,7);c.fillStyle=fg;c.fill();
+const fav=(h,st)=>{const s=st+Math.round(h*12);if(!fx||s===sig)return;sig=s;const c=fx,n=st==='night',ink=n?'#EDEDEB':'#121316',ground=n?'#111214':'#FFFFFF',fg=st==='gold'?'#8A5A00':ink,a=h%12/6*Math.PI-Math.PI/2;
+c.clearRect(0,0,32,32);c.beginPath();c.arc(16,16,15.5,0,7);c.fillStyle=ground;c.fill();c.strokeStyle=fg;c.lineWidth=2.4;c.beginPath();c.arc(16,16,14,0,7);c.stroke();
+c.lineCap='square';c.lineWidth=3;c.beginPath();c.moveTo(16,16);c.lineTo(16+Math.cos(a)*8.2,16+Math.sin(a)*8.2);c.stroke();c.beginPath();c.arc(16,16,2.1,0,7);c.fillStyle=fg;c.fill();
 if(!icon){document.querySelectorAll('link[rel="icon"]').forEach(x=>x.remove());icon=document.createElement('link');icon.rel='icon';icon.type='image/png';icon.setAttribute('sizes','32x32');document.head.append(icon)}icon.href=fc.toDataURL('image/png')};
-const draw=re=>{const now=new Date(),h=+hr.format(now),m=sun(+now),g=m>=0;fav((((Math.floor(now/6e4)+off(LA,now))%1440+1440)%1440)/60,g?'gold':h>=22||h<7?'night':'day');chip.hidden=!chipOn||mine;
-if(mine){set(b,'Your time · '+me.format(now).replace(',',''));set(pa,gap(now));set(pb,'');gh.hidden=true;wx.hidden=false;night.hidden=true;return}
-const t='Los Angeles · '+la.format(now).replace(',','');if(re&&!RM.matches&&!document.hidden&&b.textContent!==t&&Date.now()-t0>6e4){go(b);go(cx);setTimeout(()=>{if(!mine)set(b,t)},90)}else set(b,t);night.hidden=!(h>=22||h<7);
-const base=w?w.t+'°'+(w.c?' and '+w.c:'')+' in Long Beach':'';set(pa,base+(base&&g?' · ':''));set(gt,base?'golden hour':'Golden hour');set(pb,g&&!base?' in Long Beach':'');gh.hidden=!g;if(g)sunAt(m);wx.hidden=pend||!(base||g)};
-b.addEventListener('click',()=>{mine=!mine;b.title=mine?'Show Los Angeles time':'Show your local time';draw()});
-draw();l.textContent='';l.append(pw,chip,wx,night);setTimeout(()=>{draw(1);setInterval(()=>draw(1),60000)},60000-Date.now()%60000);
-const end=v=>{if(!pend)return;pend=false;const shown=chipOn,fin=()=>{chipOn=false;chip.className='wxchip';w=v;draw();if(shown&&!wx.hidden&&!RM.matches)go(wx,'in')};if(!shown||RM.matches)return fin();chip.classList.remove('on');chip.classList.add(v?'out':'gone');setTimeout(fin,v?160:220)};
-if(pend){setTimeout(()=>{if(pend){chipOn=true;draw();if(!RM.matches)go(chip,'on')}},RM.matches?250:1000);const c=new AbortController();setTimeout(()=>c.abort(),3000);fetch('https://card-weather.bigsidd-75f.workers.dev/now.json',{signal:c.signal}).then(r=>r.ok?r.json():{}).then(d=>end(typeof d.t==='number'&&d.at&&Date.now()-Date.parse(d.at)<72e5?{t:d.t,c:typeof d.c==='string'?d.c:''}:null)).catch(()=>end(null))}
+const draw=re=>{const now=new Date(),h=+hr.format(now),g=sun(+now)>=0,nt=h>=22||h<7;
+fav((((Math.floor(now/6e4)+off(LA,now))%1440+1440)%1440)/60,g?'gold':nt?'night':'day');
+if(mine){two('Your time',me.format(now).replace(',',''));set(wx,gap(now));set(night,'');return}
+const tm=la.format(now).replace(',',''),t='Los Angeles Area · '+tm;if(re&&t!==last&&!RM.matches&&!document.hidden&&Date.now()-t0>6e4){when.classList.remove('tick');void when.offsetWidth;when.classList.add('tick')}last=t;two('Los Angeles Area',tm);
+set(wx,nt?'':g?'golden hour':w?w.t+'°'+(w.c?' and '+w.c:'')+' in Long Beach':'');set(night,nt?'replies in the morning':'')};
+when.addEventListener('click',()=>{mine=!mine;when.title=mine?'Show Los Angeles time':'Show your local time';draw()});
+draw();setTimeout(()=>{draw(1);setInterval(()=>draw(1),60000)},60000-Date.now()%60000);
+if(window.fetch&&window.AbortController){const c=new AbortController();setTimeout(()=>c.abort(),3000);fetch('https://card-weather.bigsidd-75f.workers.dev/now.json',{signal:c.signal}).then(r=>r.ok?r.json():{}).then(d=>{if(typeof d.t==='number'&&d.at&&Date.now()-Date.parse(d.at)<72e5){w={t:d.t,c:typeof d.c==='string'?d.c:''};draw()}}).catch(()=>{})}
 }catch(e){}})();
 </script>
 </body>

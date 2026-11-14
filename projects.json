@@ -1,0 +1,23 @@
+[
+  {
+    "name": "os",
+    "line": "How I make product calls. Twelve rules, each tested: 40 test cases.",
+    "status": "live",
+    "year": 2026,
+    "href": "/os/"
+  },
+  {
+    "name": "High Leverage Research",
+    "line": "An AI equity-research desk built to tell you no.",
+    "status": "preview",
+    "year": 2026,
+    "href": "https://bigsidd.github.io/high-leverage-site/"
+  },
+  {
+    "name": "Midwatch",
+    "line": "An engineering company of agents: a planner, a builder and a reviewer.",
+    "status": "soon",
+    "year": 2026,
+    "href": null
+  }
+]
