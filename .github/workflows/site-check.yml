@@ -14,3 +14,10 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 .github/scripts/check_site.py
+      - name: projects page matches projects.json
+        run: |
+          python3 scripts/build-projects.py
+          git diff --exit-code -- public/projects/ || {
+            echo "::error::public/projects/index.html doesn't match projects.json. Run python3 scripts/build-projects.py and commit the result."
+            exit 1
+          }
