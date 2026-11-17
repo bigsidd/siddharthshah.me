@@ -285,7 +285,8 @@ footer a:focus-visible{background-size:100% 2px}
   function caption(c){
     var src='<a href="https://github.com/bigsidd/os/blob/main/tests/'+c.f+'.yaml">the test suite</a>';
     var rl='<a href="#r-'+c.r+'">'+esc(titles[c.r])+'</a>';
-    var how={cites:'citing '+rl+'.',weighs:'weighing it with '+rl+'.',not:'and '+rl+' must stay quiet.'}[c.k];
+    var end=/[?!.]$/.test(titles[c.r])?'':'.';
+    var how={cites:'citing '+rl+end,weighs:'weighing it with '+rl+end,not:'and '+rl+' must stay quiet.'}[c.k];
     cap.innerHTML='From '+src+': this request should get '+decs(c).map(function(d){return '<b>'+d+'</b>'}).join(' or ')+', '+how;
   }
   function inView(){
