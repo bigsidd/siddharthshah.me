@@ -15,7 +15,7 @@
   },
   {
     "name": "Midwatch",
-    "story": "Agents that write code will ship it too if nobody stops them. Midwatch splits the work across three agents, one to plan, one to build and one to review, so none of them grades its own work, and the ship decision stays with me.",
+    "story": "Agents that write code will ship it too if nobody stops them. Instead of one agent doing everything, Midwatch runs like a small team: one plans, one builds and one reviews, each coming to the work fresh, so none of them grades its own work. The ship decision stays with me.",
     "status": "building",
     "year": 2026,
     "href": "https://midwatch.siddharthshah.me/"
