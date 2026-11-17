@@ -31,51 +31,29 @@
 html,body{margin:0;background:var(--bg)}
 body{font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-a:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-main{max-width:800px;margin:0 auto;padding:40px 24px 64px}
-.back,.counts,h2,.yr,.lab,summary,dt{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+main{max-width:760px;margin:0 auto;padding:40px 24px 64px}
+.back,.meta{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .back{font-size:13px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 .back:hover{color:var(--ink)}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,56px);line-height:1;letter-spacing:-.03em;margin:8px 0 10px}
-.sub{color:var(--muted);font-size:17px;line-height:1.5;margin:0;max-width:56ch}
-.counts{margin:4px 0 0}
-.counts a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:4px}
-.counts a:hover{color:var(--ink)}
-h2{margin:36px 0 0;padding:0 0 10px}
-section:first-of-type h2{margin-top:20px}
-ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
-.p{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);gap:8px 24px;padding:22px 0;border-bottom:1px solid var(--hair)}
-h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;margin:0;font-size:20px;line-height:1.15}
-.big{padding:28px 0}
-.big h3{font-size:clamp(26px,4vw,34px);line-height:1.05}
-.hd .yr{display:block;margin-top:8px}
-.tx p{margin:0}
-.ln{color:var(--muted);font-size:16px;line-height:1.45}
-.big .ln{color:var(--ink);font-size:17px}
-.tx .call{margin-top:12px;font-size:16px;line-height:1.5}
-.call .lab{display:block;margin-bottom:2px}
-details{margin-top:6px}
-summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:44px}
-summary::-webkit-details-marker{display:none}
-summary:hover{color:var(--ink)}
-.mk::before{content:"+";font-size:15px}
-details[open] .mk::before{content:"\2212"}
-dl{margin:0 0 6px;display:grid;gap:12px}
-dt{margin:0 0 2px}
-dd{margin:0;font-size:16px;line-height:1.5}
-details[open] dl{animation:fade .18s ease-out}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@media (prefers-reduced-motion:reduce){details[open] dl{animation:none}}
-.go{display:inline-flex;align-items:center;min-height:44px;margin-bottom:-8px;font-weight:600;font-size:16px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
-.go .ar{color:var(--accent);font-family:var(--mono);margin-left:2px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,56px);line-height:1;letter-spacing:-.03em;margin:8px 0 12px}
+.sub{color:var(--muted);font-size:17px;line-height:1.5;margin:0 0 28px;max-width:52ch}
+ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
+li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;padding:28px 0 24px;border-bottom:1px solid var(--hair)}
+.meta{margin:0;padding-top:9px;line-height:1.7}
+.meta span{display:block}
+h2{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,3.6vw,30px);line-height:1.1;margin:0 0 10px}
+.story{margin:0;font-size:17px;line-height:1.6;max-width:60ch}
+.go{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:600;font-size:16px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
+.ar{color:var(--accent);font-family:var(--mono)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:640px){
   main{padding:16px 18px 48px}
-  .p{grid-template-columns:1fr;gap:6px;padding:18px 0}
-  .big{padding:22px 0}
-  .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-  .hd .yr{margin:0}
-  .tx .call{margin-top:10px}
+  li{grid-template-columns:1fr;gap:4px;padding:22px 0 18px}
+  .meta{padding:0}
+  .meta span{display:inline}
+  .meta span+span::before{content:" · "}
+  .story{font-size:16.5px}
 }
 </style>
 </head>
@@ -83,11 +61,12 @@ details[open] dl{animation:fade .18s ease-out}
 <main>
 <a class="back" href="/">← Siddharth Shah</a>
 <h1>Projects</h1>
-<p class="sub">Things I've built or am building, and the call I made on each.</p>
-<p class="counts"><a href="#live">1 live</a> · <a href="#preview">1 preview</a> · <a href="#building">1 building</a></p>
-<section aria-labelledby="live"><h2 id="live">Live</h2><ul><li class="p big"><div class="hd"><h3>os</h3><span class="yr">2026</span></div><div class="tx"><p class="ln">How I make product calls. Fourteen rules and 56 test cases; the last run passed 111 of 168.</p><p class="call"><span class="lab">The call</span>Write the rules down and test them like code, against real cases.</p><details><summary><span class="mk" aria-hidden="true"></span>Problem and result</summary><dl><div class="item"><dt>Problem</dt><dd>My product calls lived in my head, so nobody could check them or argue with them.</dd></div><div class="item"><dt>Result</dt><dd>Each run ranks the weakest rules, so I know which ones to fix first.</dd></div></dl></details><a class="go" href="/os/">Read the page here <span class="ar" aria-hidden="true">→</span></a></div></li></ul></section>
-<section aria-labelledby="preview"><h2 id="preview">Preview</h2><ul><li class="p small"><div class="hd"><h3>High Leverage Research</h3><span class="yr">2026</span></div><div class="tx"><p class="ln">An AI investment committee. Nothing publishes until I sign it.</p><p class="call"><span class="lab">The call</span>Run it as a committee with dissent, and keep the final vote human.</p><details><summary><span class="mk" aria-hidden="true"></span>Problem</summary><dl><div class="item"><dt>Problem</dt><dd>AI research sounds equally confident whether it is right or wrong.</dd></div></dl></details><a class="go" href="https://research.siddharthshah.me/">research.siddharthshah.me <span class="ar" aria-hidden="true">↗</span><span class="sr"> (opens its own site)</span></a></div></li></ul></section>
-<section aria-labelledby="building"><h2 id="building">Building</h2><ul><li class="p small"><div class="hd"><h3>Midwatch</h3><span class="yr">2026</span></div><div class="tx"><p class="ln">Three AI agents plan, build and review. I decide what ships.</p><p class="call"><span class="lab">The call</span>Split planning, building and review across three agents, and keep the ship decision.</p><details><summary><span class="mk" aria-hidden="true"></span>Problem</summary><dl><div class="item"><dt>Problem</dt><dd>Agents that write code will also ship it if nobody stops them.</dd></div></dl></details><a class="go" href="https://midwatch.siddharthshah.me/">midwatch.siddharthshah.me <span class="ar" aria-hidden="true">↗</span><span class="sr"> (opens its own site)</span></a></div></li></ul></section>
+<p class="sub">What I noticed, what I decided, and what happened.</p>
+<ol>
+<li><p class="meta"><span>2026</span><span>Live</span></p><div><h2>os</h2><p class="story">My product calls lived in my head, so nobody could argue with them. I wrote them down as fourteen rules and test them like code against 56 real cases. The last run passed 111 of 168, and the weakest rules are the ones I fix next.</p><a class="go" href="/os/">Read the page&nbsp;<span class="ar" aria-hidden="true">→</span></a></div></li>
+<li><p class="meta"><span>2026</span><span>Preview</span></p><div><h2>High Leverage Research</h2><p class="story">AI research sounds just as sure of itself when it is wrong. So I set it up as an investment committee instead of a single voice, and nothing publishes until I sign it.</p><a class="go" href="https://research.siddharthshah.me/">research.siddharthshah.me&nbsp;<span class="ar" aria-hidden="true">↗</span><span class="sr"> (opens its own site)</span></a></div></li>
+<li><p class="meta"><span>2026</span><span>Building</span></p><div><h2>Midwatch</h2><p class="story">Agents that write code will ship it too if nobody stops them. Midwatch splits the work across three agents, one to plan, one to build and one to review, so none of them grades its own work, and the ship decision stays with me.</p><a class="go" href="https://midwatch.siddharthshah.me/">midwatch.siddharthshah.me&nbsp;<span class="ar" aria-hidden="true">↗</span><span class="sr"> (opens its own site)</span></a></div></li>
+</ol>
 </main>
 </body>
 </html>

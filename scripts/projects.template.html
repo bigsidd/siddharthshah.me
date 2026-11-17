@@ -31,51 +31,29 @@
 html,body{margin:0;background:var(--bg)}
 body{font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-a:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-main{max-width:800px;margin:0 auto;padding:40px 24px 64px}
-.back,.counts,h2,.yr,.lab,summary,dt{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+main{max-width:760px;margin:0 auto;padding:40px 24px 64px}
+.back,.meta{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .back{font-size:13px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 .back:hover{color:var(--ink)}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,56px);line-height:1;letter-spacing:-.03em;margin:8px 0 10px}
-.sub{color:var(--muted);font-size:17px;line-height:1.5;margin:0;max-width:56ch}
-.counts{margin:4px 0 0}
-.counts a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:4px}
-.counts a:hover{color:var(--ink)}
-h2{margin:36px 0 0;padding:0 0 10px}
-section:first-of-type h2{margin-top:20px}
-ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
-.p{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);gap:8px 24px;padding:22px 0;border-bottom:1px solid var(--hair)}
-h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;margin:0;font-size:20px;line-height:1.15}
-.big{padding:28px 0}
-.big h3{font-size:clamp(26px,4vw,34px);line-height:1.05}
-.hd .yr{display:block;margin-top:8px}
-.tx p{margin:0}
-.ln{color:var(--muted);font-size:16px;line-height:1.45}
-.big .ln{color:var(--ink);font-size:17px}
-.tx .call{margin-top:12px;font-size:16px;line-height:1.5}
-.call .lab{display:block;margin-bottom:2px}
-details{margin-top:6px}
-summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:44px}
-summary::-webkit-details-marker{display:none}
-summary:hover{color:var(--ink)}
-.mk::before{content:"+";font-size:15px}
-details[open] .mk::before{content:"\2212"}
-dl{margin:0 0 6px;display:grid;gap:12px}
-dt{margin:0 0 2px}
-dd{margin:0;font-size:16px;line-height:1.5}
-details[open] dl{animation:fade .18s ease-out}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@media (prefers-reduced-motion:reduce){details[open] dl{animation:none}}
-.go{display:inline-flex;align-items:center;min-height:44px;margin-bottom:-8px;font-weight:600;font-size:16px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
-.go .ar{color:var(--accent);font-family:var(--mono);margin-left:2px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,56px);line-height:1;letter-spacing:-.03em;margin:8px 0 12px}
+.sub{color:var(--muted);font-size:17px;line-height:1.5;margin:0 0 28px;max-width:52ch}
+ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
+li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;padding:28px 0 24px;border-bottom:1px solid var(--hair)}
+.meta{margin:0;padding-top:9px;line-height:1.7}
+.meta span{display:block}
+h2{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,3.6vw,30px);line-height:1.1;margin:0 0 10px}
+.story{margin:0;font-size:17px;line-height:1.6;max-width:60ch}
+.go{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:600;font-size:16px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
+.ar{color:var(--accent);font-family:var(--mono)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:640px){
   main{padding:16px 18px 48px}
-  .p{grid-template-columns:1fr;gap:6px;padding:18px 0}
-  .big{padding:22px 0}
-  .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-  .hd .yr{margin:0}
-  .tx .call{margin-top:10px}
+  li{grid-template-columns:1fr;gap:4px;padding:22px 0 18px}
+  .meta{padding:0}
+  .meta span{display:inline}
+  .meta span+span::before{content:" · "}
+  .story{font-size:16.5px}
 }
 </style>
 </head>
@@ -83,9 +61,10 @@ details[open] dl{animation:fade .18s ease-out}
 <main>
 <a class="back" href="/">← Siddharth Shah</a>
 <h1>Projects</h1>
-<p class="sub">Things I've built or am building, and the call I made on each.</p>
-<p class="counts">{{COUNTS}}</p>
-{{GROUPS}}
+<p class="sub">What I noticed, what I decided, and what happened.</p>
+<ol>
+{{ROWS}}
+</ol>
 </main>
 </body>
 </html>

@@ -1,28 +1,21 @@
 [
   {
     "name": "os",
-    "line": "How I make product calls. Fourteen rules and 56 test cases; the last run passed 111 of 168.",
-    "problem": "My product calls lived in my head, so nobody could check them or argue with them.",
-    "call": "Write the rules down and test them like code, against real cases.",
-    "result": "Each run ranks the weakest rules, so I know which ones to fix first.",
+    "story": "My product calls lived in my head, so nobody could argue with them. I wrote them down as fourteen rules and test them like code against 56 real cases. The last run passed 111 of 168, and the weakest rules are the ones I fix next.",
     "status": "live",
     "year": 2026,
     "href": "/os/"
   },
   {
     "name": "High Leverage Research",
-    "line": "An AI investment committee. Nothing publishes until I sign it.",
-    "problem": "AI research sounds equally confident whether it is right or wrong.",
-    "call": "Run it as a committee with dissent, and keep the final vote human.",
+    "story": "AI research sounds just as sure of itself when it is wrong. So I set it up as an investment committee instead of a single voice, and nothing publishes until I sign it.",
     "status": "preview",
     "year": 2026,
     "href": "https://research.siddharthshah.me/"
   },
   {
     "name": "Midwatch",
-    "line": "Three AI agents plan, build and review. I decide what ships.",
-    "problem": "Agents that write code will also ship it if nobody stops them.",
-    "call": "Split planning, building and review across three agents, and keep the ship decision.",
+    "story": "Agents that write code will ship it too if nobody stops them. Midwatch splits the work across three agents, one to plan, one to build and one to review, so none of them grades its own work, and the ship decision stays with me.",
     "status": "building",
     "year": 2026,
     "href": "https://midwatch.siddharthshah.me/"
