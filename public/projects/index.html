@@ -32,27 +32,28 @@ html,body{margin:0;background:var(--bg)}
 body{font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-main{max-width:800px;margin:0 auto;padding:48px 24px 64px}
-.back{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:inline-block;padding:8px 0}
+main{max-width:760px;margin:0 auto;padding:40px 24px 64px}
+.back,.meta{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.back{font-size:13px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 .back:hover{color:var(--ink)}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,56px);line-height:1;letter-spacing:-.03em;margin:14px 0 10px}
-.sub{color:var(--muted);font-size:17px;line-height:1.5;margin:0 0 22px;max-width:56ch}
-ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
-li{border-bottom:1px solid var(--hair)}
-.row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) 80px 48px 16px;gap:16px;align-items:baseline;padding:16px 0;text-decoration:none}
-.row b{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em}
-.ln{color:var(--muted);font-size:16px;line-height:1.45}
-.st,.yr{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.st.live{color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,56px);line-height:1;letter-spacing:-.03em;margin:8px 0 12px}
+.sub{color:var(--muted);font-size:17px;line-height:1.5;margin:0 0 28px;max-width:52ch}
+ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
+li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;padding:28px 0 24px;border-bottom:1px solid var(--hair)}
+.meta{margin:0;padding-top:9px;line-height:1.7}
+.meta span{display:block}
+h2{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,3.6vw,30px);line-height:1.1;margin:0 0 10px}
+.story{margin:0;font-size:17px;line-height:1.6;max-width:60ch}
+.go{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:600;font-size:16px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
 .ar{color:var(--accent);font-family:var(--mono)}
-a.row:hover b{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
-.legend{margin:16px 0 0;font-size:14px;color:var(--muted)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:640px){
-  main{padding:24px 18px 48px}
-  .row{grid-template-columns:minmax(0,1fr) auto 14px;gap:2px 10px;padding:14px 0}
-  .ln{grid-column:1/-1;grid-row:2}
-  .yr{display:none}
+  main{padding:16px 18px 48px}
+  li{grid-template-columns:1fr;gap:4px;padding:22px 0 18px}
+  .meta{padding:0}
+  .meta span{display:inline}
+  .meta span+span::before{content:" · "}
+  .story{font-size:16.5px}
 }
 </style>
 </head>
@@ -60,13 +61,12 @@ a.row:hover b{text-decoration:underline;text-decoration-color:var(--accent);text
 <main>
 <a class="back" href="/">← Siddharth Shah</a>
 <h1>Projects</h1>
-<p class="sub">Things I've built or am building. Each one opens its page here (→) or goes straight to its own site (↗).</p>
-<ul>
-<li><a class="row" href="/os/"><b>os</b><span class="ln">How I make product calls. Fourteen rules and 56 test cases; the last run passed 111 of 168.</span><span class="st live">Live</span><span class="yr">2026</span><span class="ar" aria-hidden="true">→</span></a></li>
-<li><a class="row" href="https://research.siddharthshah.me/"><b>High Leverage Research</b><span class="ln">An AI investment committee. Nothing publishes until I sign it.</span><span class="st preview">Preview</span><span class="yr">2026</span><span class="ar" aria-hidden="true">↗</span><span class=sr>(opens its own site)</span></a></li>
-<li><a class="row" href="https://midwatch.siddharthshah.me/"><b>Midwatch</b><span class="ln">Three AI agents plan, build and review. I decide what ships.</span><span class="st building">Building</span><span class="yr">2026</span><span class="ar" aria-hidden="true">↗</span><span class=sr>(opens its own site)</span></a></li>
-</ul>
-<p class="legend">3 projects · newest work first within each status.</p>
+<p class="sub">What I noticed, what I decided, and what happened.</p>
+<ol>
+<li><p class="meta"><span>2026</span><span>Live</span></p><div><h2>os</h2><p class="story">My product calls lived in my head, so nobody could argue with them. I wrote them down as fourteen rules and test them like code against 56 real cases. The last run passed 111 of 168, and the weakest rules are the ones I fix next.</p><a class="go" href="/os/">Read the page&nbsp;<span class="ar" aria-hidden="true">→</span></a></div></li>
+<li><p class="meta"><span>2026</span><span>Preview</span></p><div><h2>High Leverage Research</h2><p class="story">AI research sounds just as sure of itself when it is wrong. So I set it up as an investment committee instead of a single voice, and nothing publishes until I sign it.</p><a class="go" href="https://research.siddharthshah.me/">research.siddharthshah.me&nbsp;<span class="ar" aria-hidden="true">↗</span><span class="sr"> (opens its own site)</span></a></div></li>
+<li><p class="meta"><span>2026</span><span>Building</span></p><div><h2>Midwatch</h2><p class="story">Agents that write code will ship it too if nobody stops them. Instead of one agent doing everything, Midwatch runs like a small team: one plans, one builds and one reviews, each coming to the work fresh, so none of them grades its own work. The ship decision stays with me.</p><a class="go" href="https://midwatch.siddharthshah.me/">midwatch.siddharthshah.me&nbsp;<span class="ar" aria-hidden="true">↗</span><span class="sr"> (opens its own site)</span></a></div></li>
+</ol>
 </main>
 </body>
 </html>
