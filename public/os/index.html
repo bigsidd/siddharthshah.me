@@ -292,7 +292,7 @@ footer a:focus-visible{background-size:100% 2px}
   var slip=$('slip'),ink=$('ink'),vd=$('vd'),qn=$('qn'),why=$('why'),cap=$('cap'),next=$('next'),board=$('board'),desk=$('desk');
   var st={};[].forEach.call(board.querySelectorAll('.st'),function(b){st[b.dataset.s]=b});
   var trays={};[].forEach.call(D.querySelectorAll('.tray'),function(t){trays[t.dataset.d]=t});
-  var counts={build:0,refuse:0,ask:0},seen=0,busy=false,pending=null,current=null,filed=true;
+  var counts={build:0,refuse:0,ask:0},seen=0,busy=false,pending=null,current=null,filed=true,started=false;
   var queue=[];
   function refill(){queue=cases.slice();for(var i=queue.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=queue[i];queue[i]=queue[j];queue[j]=t}}
   var first=cases.filter(function(c){return c.t==='Add a stats page'})[0];
@@ -319,6 +319,8 @@ footer a:focus-visible{background-size:100% 2px}
     });
   }
   function run(c){
+    started=true;
+    if(typeof c==='function'){if(busy){pending=c;return}busy=true;return c().then(function(){busy=false;if(pending){var q=pending;pending=null;run(q)}})}
     if(busy){pending=c;return}
     busy=true;pending=null;
     fileAway().then(function(){
@@ -376,15 +378,14 @@ footer a:focus-visible{background-size:100% 2px}
     var b=e.target.closest('.st');if(!b)return;
     var s=b.dataset.s;
     if(b.classList.contains('weigh')){
-      if(busy)return;
-      fileAway().then(function(){
+      run(function(){return fileAway().then(function(){
         current=null;ink.hidden=true;vd.hidden=true;qn.hidden=true;why.hidden=true;
         $('slip-n').textContent='Rule '+b.querySelector('.sn').textContent;
         $('slip-t').textContent=titles[s];$('slip-b').textContent='Weighs the other rules. No test cases.';
-        slip.style.opacity='';anim(slip,[{opacity:0},{opacity:1}],{duration:260});
-      });
-      clearBoard();b.classList.add('quiet');
-      cap.innerHTML='<a href="#r-'+s+'">'+esc(titles[s])+'</a> weighs the other rules against each other. It is never the reason for a call, so it has no test cases.';
+        slip.style.opacity='';clearBoard();b.classList.add('quiet');
+        cap.innerHTML='<a href="#r-'+s+'">'+esc(titles[s])+'</a> weighs the other rules against each other. It is never the reason for a call, so it has no test cases.';
+        return anim(slip,[{opacity:0},{opacity:1}],{duration:260});
+      })});
       return;
     }
     inView();forRule(s);
@@ -392,7 +393,7 @@ footer a:focus-visible{background-size:100% 2px}
   // start state: the first case, played when the desk scrolls into view
   refill();queue=queue.filter(function(c){return c!==first});
   ink.hidden=true;vd.hidden=true;why.hidden=true;
-  function start(){run(first)}
+  function start(){if(!started)run(first)}
   if(RM){start()}
   else if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();setTimeout(start,300)}},{threshold:.35});io.observe(desk)}
   else start();
@@ -445,7 +446,7 @@ footer a:focus-visible{background-size:100% 2px}
   $('prev').addEventListener('click',function(){pick(sel-1,true)});
   $('nxt').addEventListener('click',function(){pick(sel+1,true)});
   deck.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var j=sel+(e.key==='ArrowRight'?1:-1);pick(j,true);cards[(j+n)%n].focus()}
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var f=cards.indexOf(D.activeElement),j=(f<0?sel:f)+(e.key==='ArrowRight'?1:-1);pick(j,true);cards[(j+n)%n].focus()}
   });
   // links from the desk caption open that card
   D.addEventListener('click',function(e){
