@@ -129,11 +129,15 @@ note = (f'Run against <a href="https://midwatch.siddharthshah.me/">Midwatch</a>&
         f'{res["samples"]} samples per case. The bar is {round(100 * res["bar"]["overall"])}% '
         + ("and it&#x27;s met." if res["bar_met"] else "and it isn&#x27;t met yet."))
 if below:
-    low = min(res["per_rule"][s]["passed"] for s in below)
-    weakest = [s for s in below if res["per_rule"][s]["passed"] == low]
-    total = res["per_rule"][weakest[0]]["total"]
+    pr = res["per_rule"]
+    low = min(pr[s]["passed"] / pr[s]["total"] for s in below)
+    weakest = [s for s in below if pr[s]["passed"] / pr[s]["total"] == low]
+    counts = {(pr[s]["passed"], pr[s]["total"]) for s in weakest}
+    at = (f'at {pr[weakest[0]]["passed"]} of {pr[weakest[0]]["total"]}, ' if len(counts) == 1
+          else f'at {round(100 * low)}%, ')
+    verb = "is" if len(weakest) == 1 else "are"
     note += (f' {word(len(below)).capitalize()} of the {word(len(rules))} rules are under the {round(100 * per_bar)}% per-rule bar; '
-             f'the weakest, at {low} of {total}, {"is" if len(weakest) == 1 else "are"} {join([rule_link(s) for s in weakest])}.')
+             f'the weakest, {at}{verb} {join([rule_link(s) for s in weakest])}.')
 # What the misses were, ordered by failed runs, from the failures list.
 refused = sum(f["samples_failed"] for f in res["failures"] if any(r.startswith("decided refuse,") for r in f["reasons"]))
 neighbour = sum(f["samples_failed"] for f in res["failures"]
@@ -148,13 +152,13 @@ note += f' <a href="{GITHUB}/blob/main/tests/results.json">The full results</a>.
 # ---------- markup ----------
 n_weigh = sum(r["weigh"] for r in rules)
 stations = "\n".join(
-    f'<li{" class=\"w\"" if r["weigh"] else ""}><button type="button" class="st{" weigh" if r["weigh"] else ""}" data-s="{r["slug"]}">'
+    '<li' + (' class="w"' if r["weigh"] else '') + f'><button type="button" class="st{" weigh" if r["weigh"] else ""}" data-s="{r["slug"]}">'
     f'<span class="sn">{r["order"]:02d}</span><span class="sl">{e(SHORT.get(r["slug"], r["title"]))}</span></button></li>'
     for r in rules)
 cards = "\n".join(
     f'<li class="card{" weigh" if r["weigh"] else ""}" id="r-{r["slug"]}" data-i="{i}">'
     f'<div class="front"><span class="cn">{r["order"]:02d}</span>'
-    f'{"<span class=\"tag\">Weighs</span>" if r["weigh"] else ""}'
+    + ('<span class="tag">Weighs</span>' if r["weigh"] else '') +
     f'<h3 class="ct">{e(r["title"])}</h3><p class="cr">{e(r["rule"])}</p></div>'
     f'<div class="back"><p><b>Why.</b> {e(r["why"])}</p><p><b>Example.</b> {e(r["ex"])}</p>'
     f'<dl><dt>Fires when</dt><dd>{e(r["fires"])}</dd><dt>Not when</dt><dd>{e(r["notw"])}</dd>'
@@ -166,7 +170,8 @@ first_i = next((i for i, c in enumerate(cases) if c["t"] == "Add a stats page"),
 first = cases[first_i]
 fds = first["d"] if isinstance(first["d"], list) else [first["d"]]
 fr = by_slug[first["r"]]
-how = {"cites": f'citing {rule_link(first["r"])}.', "weighs": f'weighing it with {rule_link(first["r"])}.',
+end = "" if fr["title"][-1:] in "?!." else "."
+how = {"cites": f'citing {rule_link(first["r"])}{end}', "weighs": f'weighing it with {rule_link(first["r"])}{end}',
        "not": f'and {rule_link(first["r"])} must stay quiet.'}[first["k"]]
 first_cap = (f'From <a href="{GITHUB}/blob/main/tests/{first["f"]}.yaml">the test suite</a>: this request should get '
              + " or ".join(f"<b>{x}</b>" for x in fds) + f", {how}")
