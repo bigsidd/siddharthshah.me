@@ -1,0 +1,69 @@
+{
+  "title": "Scout",
+  "headline": "I built an AI analyst that answered a revenue team's questions in Slack",
+  "summary": "A Slack bot built with Claude Code that read the data warehouse and affiliate offer feeds, and answered with how sure it was and one next step.",
+  "description": "An AI analyst in Slack that answered a revenue team's data questions with a confidence line and one next step.",
+  "year": 2026,
+  "at_work": true,
+  "updated": "2026-11-19",
+  "facts": [
+    [
+      "Role",
+      "Sole builder: design, code, evals"
+    ],
+    [
+      "Built with",
+      "Claude Code, Slack, about 40 tools"
+    ],
+    [
+      "Checks",
+      "About 235 smoke tests before each deploy"
+    ]
+  ],
+  "outcome": "Six colleagues asked it about 105 questions, and one of its payout recommendations went live in an affiliate network.",
+  "hero": {
+    "img": "answer.png",
+    "ratio": "7/6",
+    "alt": "A Slack thread. Someone asks Scout why revenue is down today. Scout replies that revenue is tracking 14% below its usual Tuesday, lists what is driving it and what is not the problem, gives one action, and closes with a confidence line: high, 4 weeks of data behind it.",
+    "caption": "A confidence line and one next step, every time."
+  },
+  "story": [
+    "Our revenue team already worked in Slack, so Scout lived there: @mention it in any channel and ask. When a colleague said a projected RPM looked wrong, Scout agreed and called its own number a model artifact.",
+    "Questions were what people came for. The scheduled posts, a morning pulse and weekly digests, drew almost no replies. I turned off an hourly monitor and removed a daily reminder that had gone about 137 days without a single answer."
+  ],
+  "calls": [
+    {
+      "call": "No number without context",
+      "why": "Every data answer carried a confidence line, and Scout said \"Thin data\" when too little sat behind an answer."
+    },
+    {
+      "call": "Ask before guessing",
+      "why": "If a publisher name could mean two accounts, it asked which one you meant."
+    },
+    {
+      "call": "Take the better forecaster",
+      "why": "When a stronger forecaster turned up, I folded its method into Scout the same day and kept it behind a backtest gate, out of users' sight."
+    },
+    {
+      "call": "Evals from real questions",
+      "why": "Fifteen questions colleagues had actually asked decided which tool answered what, and which tools must not fire."
+    }
+  ],
+  "gallery": {
+    "layout": "pair",
+    "images": [
+      {
+        "img": "digest.png",
+        "ratio": "7/4",
+        "alt": "A weekly Slack post titled New offers worth a look this week, listing two invented offers with payout, estimated RPM, a one-line reason and Add to Queue and Skip buttons.",
+        "caption": "The weekly offer digest."
+      },
+      {
+        "img": "velocity.png",
+        "ratio": "7/4",
+        "alt": "A Slack alert titled Revenue velocity, publishers tracking down, flagging an invented publisher on pace to miss its month, with the likely cause and one thing to check.",
+        "caption": "A velocity alert. Every screen uses Scout's card layout with invented data."
+      }
+    ]
+  }
+}
