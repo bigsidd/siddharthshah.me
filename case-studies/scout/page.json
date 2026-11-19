@@ -34,7 +34,7 @@
   "calls": [
     {
       "call": "No number without context",
-      "why": "Every data answer carried a confidence line, and Scout said \"Thin data\" when fewer than 7 days or 100 sessions sat behind it."
+      "why": "Every data answer carried a confidence line, and Scout said \"Thin data\" when too little sat behind an answer."
     },
     {
       "call": "Ask before guessing",
@@ -42,7 +42,7 @@
     },
     {
       "call": "Take the better forecaster",
-      "why": "In June a team lead rated an analyst's forecaster above Scout's. I folded its method in that day and kept it behind a backtest gate, out of users' sight."
+      "why": "When a stronger forecaster turned up, I folded its method into Scout the same day and kept it behind a backtest gate, out of users' sight."
     },
     {
       "call": "Evals from real questions",
