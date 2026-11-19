@@ -1,0 +1,34 @@
+{
+  "title": "Monday Move",
+  "headline": "I built an agent that posted only the competitor news it could prove",
+  "description": "A weekly agent that posted only the competitor news it could verify, with one move for the team to make.",
+  "year": 2026,
+  "label": "Case study",
+  "blocks": [
+    {
+      "p": "Our team needed to know what seven competitors had done each week, and that news is messy. Articles get republished, and some never say when the event happened. Hand that to a model and old news comes back sounding new."
+    },
+    {
+      "p": "Monday Move was a Claude Code scheduled task I wrote and ran myself. At 8am every Monday it searched the past seven days and scored what it found by impact. Then it posted to Slack with one line on top: this week's move, the single thing to do."
+    },
+    {
+      "img": "digest.png",
+      "alt": "A Slack post headed with this week's move, followed by a high-impact and a medium-impact signal, each with a date, an angle and a source link, and a footer counting 2 verified and 4 discarded.",
+      "caption": "The Monday post, rebuilt with invented companies. The real ones stay private."
+    },
+    {
+      "p": "I decided up front, in the prompt, what counted as success: three verified signals made a good run, and eight unverified ones a failed one. Every finding needed a source and a confirmed date for when the event happened, because a republished article carries a fresh date. If a check failed, the agent dropped the item and could not swap in a weaker one. A quiet week said \"no verified signals.\""
+    },
+    {
+      "img": "log.png",
+      "alt": "A signal log with three verified rows, each with a competitor, type, date, impact and source, above a list of four checked and discarded candidates with the reason each was dropped.",
+      "caption": "Verified signals went to a log. Each run also listed what it dropped, with the reason."
+    },
+    {
+      "p": "Before its first search, the agent had to write out today's date and the date seven days back, then use that start date in every query. It was also barred from reporting its own background notes on a competitor as a find."
+    },
+    {
+      "p": "It ran about 32 times. When I had an agent review the runs, the move line was the part that held up best. In one July week a rival shipped, in about four weeks, a targeting feature we had expected two to three quarters out. The move that week: update that rival's battlecard now."
+    }
+  ]
+}
