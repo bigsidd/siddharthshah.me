@@ -7,11 +7,12 @@ Each case study is a folder, case-studies/<slug>/, holding page.json and its scr
 page.json fields: title (the project's name, exactly as in projects.json); headline (says
 what was built); description (one sentence for search and link previews); year; label
 (optional, shown before the year); blocks, in reading order, each either
-{"p": "paragraph"} or {"img": "file.png", "alt": "what it shows", "caption": "optional"}.
+{"p": "paragraph"}, {"img": "file.png", "alt": "what it shows", "caption": "optional"}, or
+{"links": [{"text": "link text", "href": "https://..."}]} for a short row of outbound links.
 
-The build enforces: at most 300 words across headline, paragraphs and captions; every image
-exists, is a PNG and has alt text; and the project's projects.json entry links to
-/projects/<slug>/. Images are copied next to the page with their real width and height.
+The build enforces: at most 300 words across headline, paragraphs, captions and link text;
+every image exists, is a PNG and has alt text; every link is https and has text; and the
+project's projects.json entry links to /projects/<slug>/. Images are copied next to the page with their real width and height.
 """
 import html
 import json
@@ -58,6 +59,16 @@ for folder in sorted(p for p in SRC.glob("*") if p.is_dir()):
         if "p" in b:
             count += words(b["p"])
             blocks.append(f"<p>{esc(b['p'])}</p>")
+            continue
+        if "links" in b:
+            items = []
+            for link in b["links"]:
+                text, href = link.get("text", "").strip(), link.get("href", "").strip()
+                assert text, f"{slug}: a link needs text"
+                assert href.startswith("https://"), f"{slug}: link {text!r} must be https"
+                count += words(text)
+                items.append(f'<a href="{esc(href)}">{esc(text)}&nbsp;<span class="ar" aria-hidden="true">↗</span></a>')
+            blocks.append(f'<p class="links">{"".join(items)}</p>')
             continue
         img = folder / b["img"]
         assert img.is_file(), f"{slug}: missing image {b['img']}"
