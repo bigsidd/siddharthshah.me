@@ -1,0 +1,69 @@
+{
+  "title": "Monday Move",
+  "headline": "I built an agent that posted only the competitor news it could prove",
+  "summary": "A Claude Code scheduled task that read a week of news on seven competitors every Monday and turned it into one move for the team, with a source behind every signal.",
+  "description": "A weekly agent that read seven competitors' news and led each Slack post with one move for the team, every signal sourced and dated.",
+  "year": 2026,
+  "updated": "2026-11-19",
+  "at_work": true,
+  "facts": [
+    [
+      "Role",
+      "Builder: wrote the prompt and ran it"
+    ],
+    [
+      "Built with",
+      "Claude Code, web search, Slack, Notion"
+    ],
+    [
+      "Cadence",
+      "Mondays 8am, about 15–20 searches a run"
+    ]
+  ],
+  "outcome": "Nine digests led with a verified move, and quiet weeks said \"no verified signals\" instead of filling the slot.",
+  "hero": {
+    "img": "digest.png",
+    "ratio": "7/5",
+    "alt": "A Slack post headed with this week's move, followed by a high-impact and a medium-impact signal, each with a date, an angle and a source link, and a footer counting 2 verified and 4 discarded.",
+    "caption": "The Monday post, rebuilt with invented companies."
+  },
+  "story": [
+    "My team at work needed to know what seven competitors did each week. That news is messy: articles get republished, and some never say when the event happened.",
+    "Each Monday at 8am the agent searched the past seven days and rated every finding. High meant it could threaten revenue or open a market; Medium, worth watching or enough to sway a deal or two; Low, noise that went to the Notion log and never the post."
+  ],
+  "calls": [
+    {
+      "call": "Fewer, verified signals",
+      "why": "Three verified signals made a good run, and eight unverified ones a failed run. Eight looks busier, so the prompt ranked it lower."
+    },
+    {
+      "call": "Verify or discard",
+      "why": "Before searching, the agent wrote out the seven-day window. Each item then needed a source and a confirmed event date inside it, or it was dropped, never swapped for a weaker one."
+    },
+    {
+      "call": "Background is not news",
+      "why": "What the prompt told it about each competitor could never come back as a finding."
+    },
+    {
+      "call": "One move on top",
+      "why": "Each post opened with the single most actionable signal, verb-first, so the team had one thing to do."
+    }
+  ],
+  "gallery": {
+    "layout": "pair",
+    "images": [
+      {
+        "img": "log.png",
+        "ratio": "4/3",
+        "alt": "A signal log with three verified rows, each with a competitor, type, date, impact and source, above four checked and discarded candidates with the reason each was dropped.",
+        "caption": "Verified signals went to a log; each run also listed what it dropped and why."
+      },
+      {
+        "img": "canvas.png",
+        "ratio": "4/3",
+        "alt": "A living page headed This Week's Move, with high- and medium-impact signals and a table of competitors by threat level.",
+        "caption": "A living page held the move and the competitor landscape between posts."
+      }
+    ]
+  }
+}

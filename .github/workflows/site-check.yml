@@ -21,3 +21,10 @@ jobs:
             echo "::error::public/projects/index.html doesn't match projects.json. Run python3 scripts/build-projects.py and commit the result."
             exit 1
           }
+      - name: case studies match their page.json
+        run: |
+          python3 scripts/build-case-studies.py
+          git diff --exit-code -- public/projects/ public/sitemap.xml || {
+            echo "::error::A case-study page or the sitemap doesn't match case-studies/. Run python3 scripts/build-case-studies.py and commit the result."
+            exit 1
+          }
