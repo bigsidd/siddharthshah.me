@@ -42,7 +42,10 @@ ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
 li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;padding:28px 0 24px;border-bottom:1px solid var(--hair)}
 .meta{margin:0;padding-top:9px;line-height:1.7}
 .meta span{display:block}
-h2{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,3.6vw,30px);line-height:1.1;margin:0 0 10px}
+h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,3.6vw,30px);line-height:1.1;margin:0 0 10px}
+.gh{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin:0 0 6px}
+.gi{color:var(--muted);font-size:16px;line-height:1.5;margin:0 0 14px;max-width:52ch}
+.grp{margin:0 0 44px}
 .story{margin:0;font-size:17px;line-height:1.6;max-width:60ch}
 .go{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:600;font-size:16px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
 .ar{color:var(--accent);font-family:var(--mono)}
@@ -62,9 +65,7 @@ h2{font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:cl
 <a class="back" href="/">← Siddharth Shah</a>
 <h1>Projects</h1>
 <p class="sub">What I noticed, what I decided, and what happened.</p>
-<ol>
-{{ROWS}}
-</ol>
+{{GROUPS}}
 </main>
 </body>
 </html>

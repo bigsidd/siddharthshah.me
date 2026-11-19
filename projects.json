@@ -21,31 +21,35 @@
     "href": "https://midwatch.siddharthshah.me/"
   },
   {
-    "name": "Monday Move",
-    "story": "Competitor news piles up faster than anyone can act on it. A weekly automation that turns it into one decision. Write-up coming soon.",
-    "status": "soon",
-    "year": 2025,
-    "href": null
-  },
-  {
     "name": "Scout",
     "story": "Checking the same numbers every morning is how people miss the day they move. An agent that stays quiet until something actually matters. Write-up coming soon.",
     "status": "soon",
     "year": 2026,
-    "href": null
+    "href": null,
+    "credit": "Built at work"
+  },
+  {
+    "name": "Monday Move",
+    "story": "Competitor news piles up faster than anyone can act on it. A weekly automation that turns it into one decision. Write-up coming soon.",
+    "status": "soon",
+    "year": 2025,
+    "href": null,
+    "credit": "Built at work"
   },
   {
     "name": "Game offers",
     "story": "Instead of pitching a new in-game format from slides, I helped build and ship small games that ran it. Write-up coming soon.",
     "status": "soon",
     "year": 2025,
-    "href": null
+    "href": null,
+    "credit": "Built at work"
   },
   {
     "name": "Store offers",
     "story": "Offers that reach shoppers in physical stores at the moments they are actually paying attention. Write-up coming soon.",
     "status": "soon",
     "year": 2026,
-    "href": null
+    "href": null,
+    "credit": "Built at work"
   }
 ]
