@@ -41,10 +41,14 @@ main{max-width:760px;margin:0 auto;padding:40px 24px 64px}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(32px,5.4vw,48px);line-height:1.04;letter-spacing:-.03em;margin:10px 0 24px;max-width:22ch;text-wrap:balance}
 .body p{font-size:18px;line-height:1.65;margin:0 0 20px;max-width:62ch;text-wrap:pretty}
 figure{margin:32px 0 36px}
+figure a{display:block}
 figure img{display:block;width:100%;height:auto;border:1px solid var(--hair);background:#FFFFFF}
 :root[data-theme="dark"] figure img{filter:brightness(.92)}
 figcaption{font-size:14px;line-height:1.5;color:var(--muted);margin-top:10px;max-width:62ch}
 .foot{margin:40px 0 0;border-top:1px solid var(--hair)}
+.body .links{display:flex;flex-wrap:wrap;gap:0 24px;margin:4px 0 20px}
+.links a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;font-size:16px;text-decoration:underline}
+.ar{color:var(--accent);font-family:var(--mono)}
 @media (max-width:640px){
   main{padding:16px 18px 48px}
   .body p{font-size:17px}
@@ -59,15 +63,16 @@ figcaption{font-size:14px;line-height:1.5;color:var(--muted);margin-top:10px;max
 <h1>I led product on an app that sends offers as you walk into a store, then limited how often it could</h1>
 <div class="body">
 <p>WiWo notices when a phone walks into a store and, if there is an offer, sends a push. It is live on iOS and Android. I led product from April to early July. The co-founder built the prototype, the mobile engineer built the app and the backend engineer built the developer platform. I stepped back in August, and the engineers kept shipping.</p>
-<figure><img src="moment.png" alt="A phone lock screen with one push reading Welcome to Corner Market, next to the offer card it opens: a free coffee with any sandwich." width="1440" height="1200" loading="lazy" decoding="async"><figcaption>The moment, with an invented store.</figcaption></figure>
+<figure><a href="moment.png"><img src="moment.png" alt="A phone lock screen with one push reading Welcome to Corner Market, next to the offer card it opens: a free coffee with any sandwich." width="1440" height="1200" loading="lazy" decoding="async"></a><figcaption>The moment, with an invented store.</figcaption></figure>
 <p>My strategy named who WiWo was not for: the retailer who wants to blast everyone who walks by. That is email marketing with a geofence. Each of three customers needed its own reason to say yes, so I ordered them. The developer who embeds it comes first and won&#x27;t ship what they&#x27;d regret. Then the retailer, who controls how often it fires. Then the shopper.</p>
-<figure><img src="customers.png" alt="Three boxes stacked, developer, retailer and shopper, each with a one-line need, joined by arrows pointing down for adoption." width="1440" height="1364" loading="lazy" decoding="async"><figcaption>Adoption runs one way, retention the other.</figcaption></figure>
-<p>So before growth I specified two limits: a per-store cooldown, so one walk-in doesn&#x27;t buzz twice, and delivery windows each store sets by day and hour. The mobile engineer built both in May.</p>
-<figure><img src="limits.png" alt="A store settings card with a cooldown switched on and delivery windows set to Monday to Friday, 7:00 am to 8:00 pm." width="1440" height="982" loading="lazy" decoding="async"><figcaption>A store&#x27;s two limits, with invented values.</figcaption></figure>
+<figure><a href="customers.png"><img src="customers.png" alt="Three boxes stacked, developer, retailer and shopper, each with a one-line need, joined by arrows pointing down for adoption." width="1440" height="1364" loading="lazy" decoding="async"></a></figure>
+<p>So before growth I specified two limits: a per-store cooldown, so one walk-in doesn&#x27;t buzz twice, and delivery windows each store sets by day and hour. The mobile engineer built both.</p>
+<figure><a href="limits.png"><img src="limits.png" alt="A store settings card with a cooldown switched on and delivery windows set to Monday to Friday, 7:00 am to 8:00 pm." width="1440" height="982" loading="lazy" decoding="async"></a><figcaption>A store&#x27;s two limits, with invented values.</figcaption></figure>
 <p>I measured first. Two weeks of notifications went into a baseline before the cooldown, as the control. It showed that iPhones and Android phones behaved very differently, and that overlapping store outlines at one test site multiplied pushes.</p>
-<figure><img src="debugger.png" alt="A verdict for one invented device: location reports, walk-in and offer request passed, push not sent because no offer was available." width="1440" height="890" loading="lazy" decoding="async"><figcaption>The outcome debugger, redrawn with invented data.</figcaption></figure>
+<figure><a href="debugger.png"><img src="debugger.png" alt="A verdict for one invented device: location reports, walk-in and offer request passed, push not sent because no offer was available." width="1440" height="890" loading="lazy" decoding="async"></a><figcaption>The outcome debugger, redrawn with invented data.</figcaption></figure>
 <p>When someone got no offer, every part looked fine. So I built an outcome debugger that follows one phone through each step and names the first that came up empty.</p>
 <p>My one success metric, offer saves per walk-in, could not be measured then, because saves lived in another system. The app logs them now.</p>
+<p class="links"><a href="https://apps.apple.com/us/app/wiwo-walk-in-walk-out-moments/id6758921440">WiWo on the App Store&nbsp;<span class="ar" aria-hidden="true">↗</span></a><a href="https://play.google.com/store/apps/details?id=com.perkswallet.wiwo.android">WiWo on Google Play&nbsp;<span class="ar" aria-hidden="true">↗</span></a></p>
 </div>
 <p class="foot"><a class="back" href="/projects/">← All projects</a></p>
 </main>

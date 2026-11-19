@@ -18,11 +18,10 @@
     },
     {
       "img": "customers.png",
-      "alt": "Three boxes stacked, developer, retailer and shopper, each with a one-line need, joined by arrows pointing down for adoption.",
-      "caption": "Adoption runs one way, retention the other."
+      "alt": "Three boxes stacked, developer, retailer and shopper, each with a one-line need, joined by arrows pointing down for adoption."
     },
     {
-      "p": "So before growth I specified two limits: a per-store cooldown, so one walk-in doesn't buzz twice, and delivery windows each store sets by day and hour. The mobile engineer built both in May."
+      "p": "So before growth I specified two limits: a per-store cooldown, so one walk-in doesn't buzz twice, and delivery windows each store sets by day and hour. The mobile engineer built both."
     },
     {
       "img": "limits.png",
@@ -42,6 +41,18 @@
     },
     {
       "p": "My one success metric, offer saves per walk-in, could not be measured then, because saves lived in another system. The app logs them now."
+    },
+    {
+      "links": [
+        {
+          "text": "WiWo on the App Store",
+          "href": "https://apps.apple.com/us/app/wiwo-walk-in-walk-out-moments/id6758921440"
+        },
+        {
+          "text": "WiWo on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=com.perkswallet.wiwo.android"
+        }
+      ]
     }
   ]
 }
