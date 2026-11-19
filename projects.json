@@ -22,10 +22,10 @@
   },
   {
     "name": "Scout",
-    "story": "Checking the same numbers every morning is how people miss the day they move. An agent that stays quiet until something actually matters. Write-up coming soon.",
+    "story": "A revenue team asking data questions in Slack needed answers that said how sure they were. Every answer from this AI analyst carried a confidence line and ended on one next step.",
     "status": "soon",
     "year": 2026,
-    "href": null,
+    "href": "/projects/scout/",
     "credit": "Built at work"
   },
   {
