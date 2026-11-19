@@ -7,7 +7,7 @@ Fields: name; story (one paragraph, at most 70 words: open with the problem, nam
 option you rejected, end on one checkable fact); status (live | preview | building |
 soon | retired); year; href (a path on this site when the project has earned its own
 page, a full URL for its own site, or null when it isn't public yet); credit (optional,
-a short plain label such as "Built at work". Rows with the same credit form one section under that label, shown first, and show the year only; rows without one follow under "Built on my own". Never a company name).
+a short plain label such as "Built at work". Rows with the same credit form one section under that label, shown first, and show the year only; rows without one follow under "Built on my own". Never a company name); links (optional, a list of {label, url} that replaces href when a row needs more than one outbound link).
 """
 import html
 import json
@@ -33,6 +33,10 @@ for p in projects:
 
 
 def link(p):
+    if p.get("links"):
+        return "&emsp;".join(
+            f'<a class="go" href="{esc(l["url"])}">{esc(l["label"])}&nbsp;<span class="ar" aria-hidden="true">↗</span>'
+            f'<span class="sr"> (opens in a new site)</span></a>' for l in p["links"])
     href = p.get("href")
     if not href:
         return ""
