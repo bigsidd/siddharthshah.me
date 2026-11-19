@@ -1,0 +1,47 @@
+{
+  "title": "WiWo",
+  "headline": "I led product on an app that sends offers as you walk into a store, then limited how often it could",
+  "description": "As product lead on WiWo, a store-offers app, I decided what it would refuse to send, and measured before I changed it.",
+  "year": 2026,
+  "label": "Case study",
+  "blocks": [
+    {
+      "p": "WiWo notices when a phone walks into a store and, if there is an offer, sends a push. It is live on iOS and Android. I led product from April to early July. The co-founder built the prototype, the mobile engineer built the app and the backend engineer built the developer platform. I stepped back in August, and the engineers kept shipping."
+    },
+    {
+      "img": "moment.png",
+      "alt": "A phone lock screen with one push reading Welcome to Corner Market, next to the offer card it opens: a free coffee with any sandwich.",
+      "caption": "The moment, with an invented store."
+    },
+    {
+      "p": "My strategy named who WiWo was not for: the retailer who wants to blast everyone who walks by. That is email marketing with a geofence. Each of three customers needed its own reason to say yes, so I ordered them. The developer who embeds it comes first and won't ship what they'd regret. Then the retailer, who controls how often it fires. Then the shopper."
+    },
+    {
+      "img": "customers.png",
+      "alt": "Three boxes stacked, developer, retailer and shopper, each with a one-line need, joined by arrows pointing down for adoption.",
+      "caption": "Adoption runs one way, retention the other."
+    },
+    {
+      "p": "So before growth I specified two limits: a per-store cooldown, so one walk-in doesn't buzz twice, and delivery windows each store sets by day and hour. The mobile engineer built both in May."
+    },
+    {
+      "img": "limits.png",
+      "alt": "A store settings card with a cooldown switched on and delivery windows set to Monday to Friday, 7:00 am to 8:00 pm.",
+      "caption": "A store's two limits, with invented values."
+    },
+    {
+      "p": "I measured first. Two weeks of notifications went into a baseline before the cooldown, as the control. It showed that iPhones and Android phones behaved very differently, and that overlapping store outlines at one test site multiplied pushes."
+    },
+    {
+      "img": "debugger.png",
+      "alt": "A verdict for one invented device: location reports, walk-in and offer request passed, push not sent because no offer was available.",
+      "caption": "The outcome debugger, redrawn with invented data."
+    },
+    {
+      "p": "When someone got no offer, every part looked fine. So I built an outcome debugger that follows one phone through each step and names the first that came up empty."
+    },
+    {
+      "p": "My one success metric, offer saves per walk-in, could not be measured then, because saves lived in another system. The app logs them now."
+    }
+  ]
+}
