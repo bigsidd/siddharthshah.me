@@ -45,11 +45,11 @@
     "credit": "Built at work"
   },
   {
-    "name": "Store offers",
-    "story": "Offers that reach shoppers in physical stores at the moments they are actually paying attention. Write-up coming soon.",
+    "name": "WiWo",
+    "story": "Offers that reach shoppers as they walk into a store come with a trust cost every time one buzzes a phone. I led product, specified the limits and measured before changing them.",
     "status": "soon",
     "year": 2026,
-    "href": null,
+    "href": "/projects/wiwo/",
     "credit": "Built at work"
   }
 ]
