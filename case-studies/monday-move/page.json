@@ -6,10 +6,10 @@
   "label": "Case study",
   "blocks": [
     {
-      "p": "Our team needed to know what seven competitors had done each week, and that news is messy. Articles get republished, and some never say when the event happened. Hand that to a model and old news comes back sounding new."
+      "p": "My team at work needed to know what seven competitors had done each week, and that news is messy. Articles get republished, and some never say when the event happened. Hand that to a model and old news comes back sounding new."
     },
     {
-      "p": "Monday Move was a Claude Code scheduled task I wrote and ran myself. At 8am every Monday it searched the past seven days and scored what it found by impact. Then it posted to Slack with one line on top: this week's move, the single thing to do."
+      "p": "Monday Move was a Claude Code scheduled task I wrote and ran myself. At 8am every Monday it searched the past seven days and rated each finding. High meant it could change deals or open a market; Low meant noise, logged but never posted. The Slack post led with one line: this week's move."
     },
     {
       "img": "digest.png",
@@ -17,7 +17,7 @@
       "caption": "The Monday post, rebuilt with invented companies. The real ones stay private."
     },
     {
-      "p": "I decided up front, in the prompt, what counted as success: three verified signals made a good run, and eight unverified ones a failed one. Every finding needed a source and a confirmed date for when the event happened, because a republished article carries a fresh date. If a check failed, the agent dropped the item and could not swap in a weaker one. A quiet week said \"no verified signals.\""
+      "p": "The hardest call was trading volume for trust. Eight items look busier than three, so I wrote the opposite rule into the prompt: three verified signals made a good run, and eight unverified ones a failed one. Every finding needed a source and a confirmed date for the event itself, because a republished article carries a fresh date. A failed check meant dropping the item, with no weaker substitute. A quiet week said \"no verified signals.\""
     },
     {
       "img": "log.png",
@@ -28,7 +28,7 @@
       "p": "Before its first search, the agent had to write out today's date and the date seven days back, then use that start date in every query. It was also barred from reporting its own background notes on a competitor as a find."
     },
     {
-      "p": "It ran about 32 times. When I had an agent review the runs, the move line was the part that held up best. In one July week a rival shipped, in about four weeks, a targeting feature we had expected two to three quarters out. The move that week: update that rival's battlecard now."
+      "p": "It ran about 32 times. A typical move, from July: a rival had shipped, in about four weeks, a targeting feature we expected two to three quarters out, so the line said to update that rival's battlecard now."
     }
   ]
 }
