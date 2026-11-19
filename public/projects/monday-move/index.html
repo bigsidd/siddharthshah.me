@@ -41,6 +41,7 @@ main{max-width:760px;margin:0 auto;padding:40px 24px 64px}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(32px,5.4vw,48px);line-height:1.04;letter-spacing:-.03em;margin:10px 0 24px;max-width:22ch;text-wrap:balance}
 .body p{font-size:18px;line-height:1.65;margin:0 0 20px;max-width:62ch;text-wrap:pretty}
 figure{margin:32px 0 36px}
+figure a{display:block}
 figure img{display:block;width:100%;height:auto;border:1px solid var(--hair);background:#FFFFFF}
 :root[data-theme="dark"] figure img{filter:brightness(.92)}
 figcaption{font-size:14px;line-height:1.5;color:var(--muted);margin-top:10px;max-width:62ch}
@@ -58,12 +59,12 @@ figcaption{font-size:14px;line-height:1.5;color:var(--muted);margin-top:10px;max
 <p class="meta"><span>Case study</span><span>2026</span></p>
 <h1>I built an agent that posted only the competitor news it could prove</h1>
 <div class="body">
-<p>My team at work needed to know what seven competitors had done each week, and that news is messy. Articles get republished, and some never say when the event happened. Hand that to a model and old news comes back sounding new.</p>
-<p>Monday Move was a Claude Code scheduled task I wrote and ran myself. At 8am every Monday it searched the past seven days and rated each finding. High meant it could change deals or open a market; Low meant noise, logged but never posted. The Slack post led with one line: this week&#x27;s move.</p>
-<figure><img src="digest.png" alt="A Slack post headed with this week&#x27;s move, followed by a high-impact and a medium-impact signal, each with a date, an angle and a source link, and a footer counting 2 verified and 4 discarded." width="1256" height="896" loading="lazy" decoding="async"><figcaption>The Monday post, rebuilt with invented companies. The real ones stay private.</figcaption></figure>
-<p>The hardest call was trading volume for trust. Eight items look busier than three, so I wrote the opposite rule into the prompt: three verified signals made a good run, and eight unverified ones a failed one. Every finding needed a source and a confirmed date for the event itself, because a republished article carries a fresh date. A failed check meant dropping the item, with no weaker substitute. A quiet week said &quot;no verified signals.&quot;</p>
-<figure><img src="log.png" alt="A signal log with three verified rows, each with a competitor, type, date, impact and source, above a list of four checked and discarded candidates with the reason each was dropped." width="1744" height="979" loading="lazy" decoding="async"><figcaption>Verified signals went to a log. Each run also listed what it dropped, with the reason.</figcaption></figure>
-<p>Before its first search, the agent had to write out today&#x27;s date and the date seven days back, then use that start date in every query. It was also barred from reporting its own background notes on a competitor as a find.</p>
+<p>My team at work needed to know what seven competitors did each week, and that news is messy. Articles get republished, and some never say when the event happened. Hand that to a model and old news comes back sounding new.</p>
+<p>Monday Move was a Claude Code scheduled task I wrote and ran myself. At 8am every Monday it searched the past seven days and rated each finding: High if it could change deals or open a market, Medium if worth watching, Low if noise, which was logged but never posted. Each Slack post led with this week&#x27;s move.</p>
+<figure><a href="digest.png"><img src="digest.png" alt="A Slack post headed with this week&#x27;s move, followed by a high-impact and a medium-impact signal, each with a date, an angle and a source link, and a footer counting 2 verified and 4 discarded." width="1256" height="896" loading="lazy" decoding="async"></a><figcaption>The Monday post, rebuilt with invented companies. The real ones stay private.</figcaption></figure>
+<p>The hardest call was trading volume for trust. Eight items look busier than three, so the prompt said the opposite: three verified signals made a good run, and eight unverified ones a failed one. Every finding needed a source and a confirmed date for the event itself, because a republished article carries a fresh date. A failed check meant dropping the item and never replacing it with a weaker one. A quiet week said &quot;no verified signals.&quot;</p>
+<figure><a href="log.png"><img src="log.png" alt="A signal log with three verified rows, each with a competitor, type, date, impact and source, above a list of four checked and discarded candidates with the reason each was dropped." width="1744" height="979" loading="lazy" decoding="async"></a><figcaption>Verified signals went to a log. Each run also listed what it dropped, with the reason.</figcaption></figure>
+<p>Before its first search, the agent had to write out today&#x27;s date and the date seven days back, then use that start date in every query. It also couldn&#x27;t present the background I gave it on each competitor as if it had just found it.</p>
 <p>It ran about 32 times. A typical move, from July: a rival had shipped, in about four weeks, a targeting feature we expected two to three quarters out, so the line said to update that rival&#x27;s battlecard now.</p>
 </div>
 <p class="foot"><a class="back" href="/projects/">← All projects</a></p>

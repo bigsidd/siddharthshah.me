@@ -67,7 +67,7 @@ for folder in sorted(p for p in SRC.glob("*") if p.is_dir()):
         cap = b.get("caption", "")
         count += words(cap)
         blocks.append(
-            f'<figure><img src="{esc(img.name)}" alt="{esc(b["alt"])}" width="{w}" height="{h}" loading="lazy" decoding="async">'
+            f'<figure><a href="{esc(img.name)}"><img src="{esc(img.name)}" alt="{esc(b["alt"])}" width="{w}" height="{h}" loading="lazy" decoding="async"></a>'
             + (f"<figcaption>{esc(cap)}</figcaption>" if cap else "") + "</figure>")
     assert count <= MAX_WORDS, f"{slug}: {count} words, the cap is {MAX_WORDS}"
 
