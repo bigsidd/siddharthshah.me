@@ -37,15 +37,11 @@
     "credit": "Built at work"
   },
   {
-    "name": "Game offers",
-    "story": "Studios won't hand-integrate an API just to try in-game brand offers. So I built a hosted script they paste in instead, took over the dashboard, made playable demos and drafted the default contracts. An engineer built the two games linked below; I built the offer layer in the shooter.",
+    "name": "MoMoney",
+    "story": "Studios won't hand-integrate an API just to try in-game brand offers. So I built a hosted script they paste in instead, took over the dashboard, made playable demos and drafted the default contracts. An engineer built the two in-house games; I built the offer layer in the shooter.",
     "status": "building",
     "year": 2026,
-    "href": null,
-    "links": [
-      {"label": "Puzzle game on Google Play", "url": "https://play.google.com/store/apps/details?id=com.momentscience.sudoku.android"},
-      {"label": "Shooter on Google Play", "url": "https://play.google.com/store/apps/details?id=com.targetshooting.android"}
-    ],
+    "href": "/projects/momoney/",
     "credit": "Built at work"
   },
   {

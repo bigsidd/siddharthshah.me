@@ -1,0 +1,70 @@
+{
+  "title": "MoMoney",
+  "headline": "I built the script and dashboard that put brand offers inside mobile games",
+  "summary": "MoMoney lets a game studio add a small offers unit at a natural break, like a cleared level, where players see a few brand perks to claim or save.",
+  "description": "At work I built MoMoney's hosted script, dashboard work, demos and default contracts, plus the offer units in one Android game.",
+  "year": 2026,
+  "at_work": true,
+  "facts": [
+    [
+      "Role",
+      "Hosted script, dashboard, demos, contracts"
+    ],
+    [
+      "Built with",
+      "Claude Code"
+    ],
+    [
+      "Formats",
+      "Sheet, card, embed, interstitial"
+    ]
+  ],
+  "outcome": "My offer units shipped in an Android game on Google Play.",
+  "hero": {
+    "img": "moment.png",
+    "ratio": "8/5",
+    "alt": "Left, a level-cleared screen with three stars and Main Menu and Next Level buttons. Right, an offer sheet for a free bag of coffee from an invented brand, with Claim and No thanks buttons and Ad and Terms labels.",
+    "caption": "The moment, then the unit: the shooter's level-cleared screen, and an offer sheet with an invented brand."
+  },
+  "story": [
+    "A cofounder started the product and a games engineer built both in-house games. I built the offer layer in the shooter, early features in the puzzle game, the hosted script, the dashboard work, the demos and the default contracts.",
+    "Before selling it, I proposed putting the product in our own puzzle game."
+  ],
+  "calls": [
+    {
+      "call": "A script, not an API",
+      "why": "Studios wouldn't hand-integrate an API just to try a format. So I built one script they paste in. It handles several formats and reports no-fill and error reasons back to the game."
+    },
+    {
+      "call": "The advertiser leads",
+      "why": "I closed my own change that added a sponsored tag and a terms line. The advertiser's logo and name should lead each unit."
+    },
+    {
+      "call": "Respect the player",
+      "why": "In the unit rebuild I started in November, close shows from the first frame, save never leaves the game, and an offer that won't fit is skipped, not truncated."
+    },
+    {
+      "call": "Paper that fits",
+      "why": "I drafted the default publisher agreement and insertion order, then negotiated changes for the first studio that signed."
+    }
+  ],
+  "links": [
+    {
+      "text": "Shooter on Google Play, whose offer units I built",
+      "href": "https://play.google.com/store/apps/details?id=com.targetshooting.android"
+    },
+    {
+      "text": "Puzzle game on Google Play, where I built early features",
+      "href": "https://play.google.com/store/apps/details?id=com.momentscience.sudoku.android"
+    },
+    {
+      "text": "Product site",
+      "href": "https://momoney.co"
+    },
+    {
+      "text": "Sample demo",
+      "href": "https://demo.momoney.co"
+    }
+  ],
+  "updated": "2026-11-19"
+}
