@@ -22,9 +22,9 @@
   "outcome": "The cooldown and delivery windows shipped in May, after a two-week baseline. My one success metric, offer saves per walk-in, couldn't be measured then because saves lived elsewhere; the app was later changed to log them.",
   "hero": {
     "img": "moment.png",
-    "ratio": "6/5",
-    "alt": "A phone lock screen with one push reading Welcome to Corner Market, next to the offer card it opens: a free coffee with any sandwich.",
-    "caption": "The moment, with an invented store."
+    "ratio": "16/15",
+    "alt": "Two phones. On the left, a lock screen with one push reading Welcome to Corner Market, We're glad you're here. On the right, the offer it opens: 20% off a first bag of beans from an invented coffee roaster, with a Claim offer button.",
+    "caption": "The shopper's view, with invented data. The engineers built these screens."
   },
   "story": [
     "The co-founder built the prototype, the mobile engineer built the app and the backend engineer built the developer platform.",
@@ -41,27 +41,33 @@
     },
     {
       "call": "Measure first",
-      "why": "A two-week baseline before the cooldown served as the control. It showed iPhones and Android phones behaved very differently, and overlapping store outlines at one test site multiplied pushes."
+      "why": "A two-week baseline before the cooldown served as the control. It showed iPhones and Android phones behaving very differently, and overlapping outlines multiplying pushes."
     },
     {
       "call": "Make failures visible",
-      "why": "When someone got no offer, every part looked fine. So I built an outcome debugger that follows one phone through each step and names the first that came up empty."
+      "why": "When someone got no offer, every part looked fine. My outcome debugger follows one phone through each step and names the first that came up empty."
     }
   ],
   "gallery": {
-    "layout": "pair",
+    "layout": "rail",
     "images": [
       {
-        "img": "limits.png",
-        "ratio": "8/5",
-        "alt": "A store settings card with a cooldown switched on and delivery windows set to Monday to Friday, 7:00 am to 8:00 pm.",
-        "caption": "A store's two limits, with invented values."
+        "img": "outlines.png",
+        "ratio": "2/1",
+        "alt": "Two map panels on an invented street. On the left, a store drawn by its building outline and a florist drawn as a circle, with two location reports inside counting as a walk-in. On the right, two stores whose circles overlap, so one person in one spot gets a push from each.",
+        "caption": "Where two stores overlap, one walk-in set off two pushes."
       },
       {
         "img": "debugger.png",
-        "ratio": "8/5",
-        "alt": "A verdict for one invented device: location reports, walk-in and offer request passed, push not sent because no offer was available.",
+        "ratio": "11/6",
+        "alt": "An outcome debugger view for one invented phone. A banner says the offer service returned no inventory so no push was possible. Below, pings and the walk-in passed, the offer request returned no offer, and the push, delivery and open steps are greyed out, with delivery receipts marked unavailable.",
         "caption": "The outcome debugger, with invented data."
+      },
+      {
+        "img": "limits.png",
+        "ratio": "3/2",
+        "alt": "Two settings dialogs for an invented store: push windows set to weekdays 7 am to 8 pm and weekends 9 am to 6 pm, and a push cooldown field.",
+        "caption": "How the limits look today, in the backend engineer's dashboard."
       }
     ]
   },
@@ -73,6 +79,10 @@
     {
       "text": "WiWo on Google Play",
       "href": "https://play.google.com/store/apps/details?id=com.perkswallet.wiwo.android"
+    },
+    {
+      "text": "The product site",
+      "href": "https://wiwomoments.com"
     }
   ],
   "updated": "2026-11-19"
