@@ -138,6 +138,13 @@ if below:
     verb = "is" if len(weakest) == 1 else "are"
     note += (f' {word(len(below)).capitalize()} of the {word(len(rules))} rules are under the {round(100 * per_bar)}% per-rule bar; '
              f'the weakest, {at}{verb} {join([rule_link(s) for s in weakest])}.')
+if res.get("regressions"):
+    titles = [f"&quot;{e(x.split(': ', 1)[1])}&quot;" for x in res["regressions"]]
+    n = len(titles)
+    note += (f' {word(n).capitalize()} {"case" if n == 1 else "cases"} that passed every run last time '
+             f'{"misses" if n == 1 else "miss"} at least once now: {join(titles)}.')
+
+
 def miss_kind(reason):
     if reason.startswith("decided refuse,"):
         return "refused"
