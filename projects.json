@@ -1,7 +1,7 @@
 [
   {
     "name": "os",
-    "story": "My product calls lived in my head, so nobody could argue with them. I wrote them down as fourteen rules and test them like code against 56 real cases. The last run passed 111 of 168, and the weakest rules are the ones I fix next.",
+    "story": "My product calls lived in my head, so nobody could argue with them. I wrote them down as fourteen rules and test them like code against 56 real cases. The last run passed 118 of 168, and the weakest rules are the ones I fix next.",
     "status": "live",
     "year": 2026,
     "href": "/os/"
