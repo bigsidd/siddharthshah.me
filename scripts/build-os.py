@@ -138,15 +138,46 @@ if below:
     verb = "is" if len(weakest) == 1 else "are"
     note += (f' {word(len(below)).capitalize()} of the {word(len(rules))} rules are under the {round(100 * per_bar)}% per-rule bar; '
              f'the weakest, {at}{verb} {join([rule_link(s) for s in weakest])}.')
-# What the misses were, ordered by failed runs, from the failures list.
-refused = sum(f["samples_failed"] for f in res["failures"] if any(r.startswith("decided refuse,") for r in f["reasons"]))
-neighbour = sum(f["samples_failed"] for f in res["failures"]
-                if any(re.match(r"cited (?!nothing\b)[a-z-]+, expected", r) for r in f["reasons"]))
+if res.get("regressions"):
+    titles = [f"&quot;{e(x.split(': ', 1)[1])}&quot;" for x in res["regressions"]]
+    n = len(titles)
+    note += (f' {word(n).capitalize()} {"case" if n == 1 else "cases"} that passed every run last time '
+             f'{"misses" if n == 1 else "miss"} at least once now: {join(titles)}.')
+
+
+def miss_kind(reason):
+    if reason.startswith("decided refuse,"):
+        return "refused"
+    if re.match(r"cited (?!nothing\b)[a-z-]+, expected", reason):
+        return "neighbour"
+    if reason.startswith("invalid plan:"):
+        return "invalid"
+    return None
+
+
+# What the misses were, ordered by failed runs. Each failed run leaves one reason and the list is
+# de-duplicated. A case's split is exact when its reasons share one kind (they cover every failed run)
+# or there are as many reasons as failed runs; otherwise it is unknown, and no group is ranked.
+misses, exact = {}, True
+for f in res["failures"]:
+    kinds = [miss_kind(r) for r in f["reasons"]]
+    if len(set(kinds)) == 1:
+        if kinds[0]:
+            misses[kinds[0]] = misses.get(kinds[0], 0) + f["samples_failed"]
+    elif len(kinds) == f["samples_failed"]:
+        for k in kinds:
+            if k:
+                misses[k] = misses.get(k, 0) + 1
+    else:
+        exact = False
 miss = {"refused": "the planner refusing where the case expected a build or a question",
-        "neighbour": "citing a neighbouring rule instead of the one the case tests"}
-if refused or neighbour:
-    a, b = ("refused", "neighbour") if refused >= neighbour else ("neighbour", "refused")
-    note += f" The biggest group of failed runs is {miss[a]}; {miss[b]} comes next."
+        "neighbour": "citing a neighbouring rule instead of the one the case tests",
+        "invalid": "a plan the checks reject as invalid"}
+top = sorted(misses, key=lambda k: (-misses[k], list(miss).index(k)))[:2] if exact else []
+if len(top) == 2:
+    note += f" The biggest group of failed runs is {miss[top[0]]}; {miss[top[1]]} comes next."
+elif top:
+    note += f" The biggest group of failed runs is {miss[top[0]]}."
 note += f' <a href="{GITHUB}/blob/main/tests/results.json">The full results</a>.'
 
 # ---------- markup ----------
