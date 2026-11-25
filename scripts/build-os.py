@@ -156,19 +156,24 @@ def miss_kind(reason):
 
 
 # What the misses were, ordered by failed runs. Each failed run leaves one reason and the list is
-# de-duplicated, so a lone reason covers every failed run of its case; otherwise each reason counts
-# once, which is exact when there are as many reasons as failed runs and a floor when there are fewer.
-misses = {}
+# de-duplicated. A case's split is exact when its reasons share one kind (they cover every failed run)
+# or there are as many reasons as failed runs; otherwise it is unknown, and no group is ranked.
+misses, exact = {}, True
 for f in res["failures"]:
-    each = f["samples_failed"] if len(f["reasons"]) == 1 else 1
-    for r in f["reasons"]:
-        k = miss_kind(r)
-        if k:
-            misses[k] = misses.get(k, 0) + each
+    kinds = [miss_kind(r) for r in f["reasons"]]
+    if len(set(kinds)) == 1:
+        if kinds[0]:
+            misses[kinds[0]] = misses.get(kinds[0], 0) + f["samples_failed"]
+    elif len(kinds) == f["samples_failed"]:
+        for k in kinds:
+            if k:
+                misses[k] = misses.get(k, 0) + 1
+    else:
+        exact = False
 miss = {"refused": "the planner refusing where the case expected a build or a question",
         "neighbour": "citing a neighbouring rule instead of the one the case tests",
         "invalid": "a plan the checks reject as invalid"}
-top = sorted(misses, key=lambda k: (-misses[k], list(miss).index(k)))[:2]
+top = sorted(misses, key=lambda k: (-misses[k], list(miss).index(k)))[:2] if exact else []
 if len(top) == 2:
     note += f" The biggest group of failed runs is {miss[top[0]]}; {miss[top[1]]} comes next."
 elif top:
